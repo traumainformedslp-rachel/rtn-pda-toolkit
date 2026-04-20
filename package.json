@@ -1,0 +1,38 @@
+{
+  "name": "rtn-pda-toolkit",
+  "version": "1.0.0",
+  "description": "Autonomy-First Toolkit: PDA-profile intervention planning for SLPs, educators, and clinicians. Evidence-informed, neurodiversity-affirming, declarative-language-based.",
+  "author": "Rachel Terra Norton, MS, CCC-SLP <rachelslp.org>",
+  "license": "MIT",
+  "keywords": [
+    "pda",
+    "pathological-demand-avoidance",
+    "autonomy-first",
+    "declarative-language",
+    "collaborative-problem-solving",
+    "unstuck-on-target",
+    "interoception",
+    "neurodiversity",
+    "speech-language-pathology",
+    "special-education",
+    "slp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0"
+  }
+}
