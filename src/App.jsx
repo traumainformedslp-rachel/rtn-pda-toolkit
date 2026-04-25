@@ -1,23 +1,23 @@
 import { useState, useEffect, useMemo } from "react";
 
-// ─────────── THEME ───────────
+// ─────────── THEME — Editorial Calm ───────────
 
-const GRADIENT = "linear-gradient(135deg, #8a6cb8, #d4718e)";
-const RAINBOW  = "linear-gradient(90deg, #F9C5C5, #FDDBB4, #FFF0A8, #C2EDD0, #BEE3F8, #D8C8F8, #EED4F8)";
+const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
+const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
 
 const T = {
   dark: {
-    bg: "#0a0a0a", card: "#111", border: "#1e1e1e", inputBg: "#0e0e0e",
-    text: "#e8e8e8", textMuted: "#888", textDim: "#555", textSub: "#aaa",
-    accent: "#b9a0dc", btnBg: "#1a1a1a", tagBg: "#1a1a1a",
-    checkBg: "#1a1226", checkColor: "#b9a0dc",
+    bg: "#1a1815", card: "#232020", border: "#34302c", inputBg: "#1a1815",
+    text: "#ece5d9", textMuted: "#82796f", textDim: "#5c544c", textSub: "#b9b0a3",
+    accent: "#c4abe2", btnBg: "#232020", tagBg: "#2a2724",
+    checkBg: "#261e30", checkColor: "#c4abe2",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#f5f5f0", card: "#ffffff", border: "#e0e0e0", inputBg: "#fafafa",
-    text: "#222", textMuted: "#666", textDim: "#999", textSub: "#555",
-    accent: "#8a6cb8", btnBg: "#f5f5f5", tagBg: "#f0f0f0",
-    checkBg: "#F3EEFA", checkColor: "#8a6cb8",
+    bg: "#fbf8f4", card: "#ffffff", border: "#e6dfd5", inputBg: "#faf6f1",
+    text: "#2a2724", textMuted: "#56504a", textDim: "#847d75", textSub: "#56504a",
+    accent: "#7a5ea8", btnBg: "#faf6f1", tagBg: "#f5efe7",
+    checkBg: "#efe8f6", checkColor: "#7a5ea8",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
@@ -62,7 +62,7 @@ const CORE_PRINCIPLES = [
 const SESSIONS = [
   {
     id: 1, title: "The Expert Within", subtitle: "Strengths-Based Self-Awareness", duration: "30 min", icon: "🧠",
-    color: "#27ae60",
+    color: "#4f9c74",
     targetSkill: "Self-awareness, strategy identification, strengths-based identity",
     evidence: "Strengths-based practice; Self-Determination Theory (Deci & Ryan, 2000); Declarative Language (Murphy, 2020)",
     cite: ["deciryan2000", "murphy2020"],
@@ -95,7 +95,7 @@ const SESSIONS = [
   },
   {
     id: 2, title: "The Flexibility Lab", subtitle: "Open-Mind Science Experiments", duration: "30 min", icon: "🔬",
-    color: "#9b59b6",
+    color: "#7a5ea8",
     targetSkill: "Cognitive flexibility, Plan A / Plan B thinking, tolerance of unexpected change",
     evidence: "Unstuck & On Target RCT (Kenworthy et al., 2014); flexibility training in autistic EF curricula",
     cite: ["cannon2011", "kenworthy2014"],
@@ -133,7 +133,7 @@ const SESSIONS = [
   },
   {
     id: 3, title: "The Co-Pilot Protocol", subtitle: "Collaborative Negotiation with Adults", duration: "30 min", icon: "✈️",
-    color: "#e89b2d",
+    color: "#b87c4e",
     targetSkill: "Self-advocacy, collaborative problem-solving, authentic negotiation",
     evidence: "Collaborative & Proactive Solutions — Plan B (Greene, 2014, 2021); Unstuck Lessons 9 & 11",
     cite: ["greene2014", "greene2021", "cannon2011"],
@@ -166,7 +166,7 @@ const SESSIONS = [
   },
   {
     id: 4, title: "The Social Detective Agency", subtitle: "Reading the Room Without Losing Yourself", duration: "30 min", icon: "🔍",
-    color: "#2c8c99",
+    color: "#5a8aaa",
     targetSkill: "Situational awareness and perspective-taking — without masking or forced conformity",
     evidence: "Double Empathy Problem (Milton, 2012); neurodivergence-informed practice (Chapman & Botha, 2023)",
     cite: ["milton2012", "chapman2023"],
@@ -198,7 +198,7 @@ const SESSIONS = [
   },
   {
     id: 5, title: "The Body Scientist", subtitle: "Interoception Without the Interrogation", duration: "30 min", icon: "🫀",
-    color: "#d4718e",
+    color: "#c47086",
     targetSkill: "Interoception, self-regulation, body–brain connection",
     evidence: "Mahler Interoception Curriculum RCT evidence (Mahler et al., 2022, 2024); Polyvagal Theory (Porges, 2011)",
     cite: ["mahler2019", "mahler2022", "mahler2024", "porges2011"],
@@ -231,7 +231,7 @@ const SESSIONS = [
   },
   {
     id: 6, title: "The Mission Control Center", subtitle: "Generalization, Self-Monitoring & Real-World Practice", duration: "30 min", icon: "🚀",
-    color: "#e63946",
+    color: "#b89446",
     targetSkill: "Self-monitoring, generalization, independence, goal-directed behavior",
     evidence: "Unstuck GWPDC framework (Cannon et al., 2011; Kenworthy et al., 2014 RCT); Self-Determination Theory",
     cite: ["cannon2011", "kenworthy2014", "deciryan2000"],
@@ -334,13 +334,45 @@ const STAFF_RESOURCES = [
 
 const STYLE = `
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Outfit', system-ui, sans-serif; transition: background 0.3s, color 0.3s; }
+body {
+  margin: 0;
+  font-family: 'DM Sans', 'Outfit', system-ui, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; pointer-events: none; inset: 0;
+  background:
+    radial-gradient(circle at 10% 15%, var(--ec-lavender-soft, #efe8f6) 0%, transparent 40%),
+    radial-gradient(circle at 92% 78%, var(--ec-mint-soft, #e8f6ed) 0%, transparent 44%),
+    radial-gradient(circle at 50% 50%, var(--ec-pink-soft, #faeaee) 0%, transparent 30%);
+  opacity: 0.85;
+  z-index: 0;
+}
+[data-theme="dark"] body::before { opacity: 0.35; }
+[data-theme="dark"] {
+  --ec-lavender-soft: #261e30;
+  --ec-mint-soft: #1e2b22;
+  --ec-pink-soft: #2e1f24;
+}
+:root {
+  --ec-lavender-soft: #efe8f6;
+  --ec-mint-soft: #e8f6ed;
+  --ec-pink-soft: #faeaee;
+}
 input, textarea, button, select { font-family: inherit; }
 textarea:focus, input:focus { outline: none; }
+:focus-visible { outline: 2px solid #b8a0d8 !important; outline-offset: 3px; border-radius: 2px; }
 button { cursor: pointer; }
 a { color: inherit; }
+::selection { background: var(--ec-lavender-soft); color: inherit; }
 @media print {
   body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; background: #fff !important; color: #000 !important; font-size: 11px !important; }
+  body::before { display: none !important; }
+  .rainbow-bar { display: none !important; }
   .no-print { display: none !important; }
   .print-break { page-break-before: always; }
   textarea { border: 1px solid #ccc !important; min-height: 40px !important; }
@@ -405,8 +437,8 @@ function SwapBox({ swaps, t, color }) {
       <MonoLabel t={t} color={color}>Declarative Language Swaps</MonoLabel>
       {swaps.map((s, i) => (
         <div key={i} style={{ marginBottom: i < swaps.length - 1 ? 8 : 0, fontSize: 13, lineHeight: 1.5 }}>
-          <div style={{ color: "#c0392b" }}><span style={{ fontWeight: 700 }}>✕ </span>{s.old}</div>
-          <div style={{ color: "#27774A" }}><span style={{ fontWeight: 700 }}>✓ </span>{s.new}</div>
+          <div style={{ color: "#c47086" }}><span style={{ fontWeight: 700 }}>✕ </span>{s.old}</div>
+          <div style={{ color: "#4f9c74" }}><span style={{ fontWeight: 700 }}>✓ </span>{s.new}</div>
         </div>
       ))}
     </div>
@@ -595,7 +627,9 @@ function AboutModal({ onClose, t }) {
 // ─────────── MAIN APP ───────────
 
 export default function App() {
-  const [dark, setDark]               = useState(false);
+  const [dark, setDark] = useState(() => {
+    try { return localStorage.getItem('rtn-theme') === 'dark'; } catch (e) { return false; }
+  });
   const [tab, setTab]                 = useState("profile");
   const [showAbout, setShowAbout]     = useState(false);
   const [responses, setResponses]     = useState({});
@@ -603,7 +637,12 @@ export default function App() {
 
   const t = dark ? T.dark : T.light;
 
-  useEffect(() => { document.body.style.background = t.bg; document.body.style.color = t.text; }, [dark, t.bg, t.text]);
+  useEffect(() => {
+    document.body.style.background = t.bg;
+    document.body.style.color = t.text;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    try { localStorage.setItem('rtn-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }, [dark, t.bg, t.text]);
   useEffect(() => { const el = document.createElement("style"); el.textContent = STYLE; document.head.appendChild(el); return () => el.remove(); }, []);
   useEffect(() => {
     if (!showAbout) return;
@@ -780,8 +819,8 @@ export default function App() {
           {DECLARATIVE_REF.map((item, i) => (
             <div key={i} className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", marginBottom: 8 }}>
               <MonoLabel t={t}>{item.cat}</MonoLabel>
-              <div style={{ fontSize: 13, color: "#c0392b", textDecoration: "line-through", opacity: 0.7, marginBottom: 4 }}>✕ {item.old}</div>
-              <div style={{ fontSize: 14, color: "#27774A", fontWeight: 500, lineHeight: 1.6 }}>✓ {item.new}</div>
+              <div style={{ fontSize: 13, color: "#c47086", textDecoration: "line-through", opacity: 0.7, marginBottom: 4 }}>✕ {item.old}</div>
+              <div style={{ fontSize: 14, color: "#4f9c74", fontWeight: 500, lineHeight: 1.6 }}>✓ {item.new}</div>
             </div>
           ))}
 
