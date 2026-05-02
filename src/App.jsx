@@ -2,22 +2,24 @@ import { useState, useEffect, useMemo } from "react";
 
 // ─────────── THEME — Editorial Calm ───────────
 
-const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
-const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
+const GRADIENT = "linear-gradient(90deg, #0e4a4a 0%, #1a7a7a 50%, #4db8b8 100%)";
+const RAINBOW  = "linear-gradient(90deg, #0e4a4a 0%, #1a7a7a 50%, #4db8b8 100%)";
 
+// ── Palette ported from RTN Eval Intake design system ──
+// teal #1a7a7a / tealDeep #0e4a4a / tealFaint #f0faf9 / gold #b8860b / navy #1b3a4b
 const T = {
   dark: {
-    bg: "#1a1815", card: "#232020", border: "#34302c", inputBg: "#1a1815",
-    text: "#ece5d9", textMuted: "#82796f", textDim: "#5c544c", textSub: "#b9b0a3",
-    accent: "#c4abe2", btnBg: "#232020", tagBg: "#2a2724",
-    checkBg: "#261e30", checkColor: "#c4abe2",
+    bg: "#0e2424", card: "#163434", border: "#1f4040", inputBg: "#0e2424",
+    text: "#e6efef", textMuted: "#8eaeae", textDim: "#5c7d7d", textSub: "#c0d4d4",
+    accent: "#4db8b8", btnBg: "#163434", tagBg: "#1a4040",
+    checkBg: "#1a4d4d", checkColor: "#7edede",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#fbf8f4", card: "#ffffff", border: "#e6dfd5", inputBg: "#faf6f1",
-    text: "#2a2724", textMuted: "#56504a", textDim: "#847d75", textSub: "#56504a",
-    accent: "#7a5ea8", btnBg: "#faf6f1", tagBg: "#f5efe7",
-    checkBg: "#efe8f6", checkColor: "#7a5ea8",
+    bg: "#f0f4f4", card: "#ffffff", border: "#d4dfdf", inputBg: "#f7fafa",
+    text: "#1c2d2d", textMuted: "#3d5555", textDim: "#7a9191", textSub: "#3d5555",
+    accent: "#1a7a7a", btnBg: "#f7fafa", tagBg: "#f0faf9",
+    checkBg: "#e0f2f1", checkColor: "#0e4a4a",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
@@ -336,39 +338,26 @@ const STYLE = `
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: 'DM Sans', 'Outfit', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
   position: relative;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
-body::before {
-  content: '';
-  position: fixed; pointer-events: none; inset: 0;
-  background:
-    radial-gradient(circle at 10% 15%, var(--ec-lavender-soft, #efe8f6) 0%, transparent 40%),
-    radial-gradient(circle at 92% 78%, var(--ec-mint-soft, #e8f6ed) 0%, transparent 44%),
-    radial-gradient(circle at 50% 50%, var(--ec-pink-soft, #faeaee) 0%, transparent 30%);
-  opacity: 0.85;
-  z-index: 0;
-}
-[data-theme="dark"] body::before { opacity: 0.35; }
 [data-theme="dark"] {
-  --ec-lavender-soft: #261e30;
-  --ec-mint-soft: #1e2b22;
-  --ec-pink-soft: #2e1f24;
+  --rtn-tealFaint: #1a4040;
 }
 :root {
-  --ec-lavender-soft: #efe8f6;
-  --ec-mint-soft: #e8f6ed;
-  --ec-pink-soft: #faeaee;
+  --rtn-tealFaint: #f0faf9;
 }
 input, textarea, button, select { font-family: inherit; }
 textarea:focus, input:focus { outline: none; }
-:focus-visible { outline: 2px solid #b8a0d8 !important; outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid #1a7a7a !important; outline-offset: 3px; border-radius: 2px; }
 button { cursor: pointer; }
 a { color: inherit; }
-::selection { background: var(--ec-lavender-soft); color: inherit; }
+::selection { background: var(--rtn-tealFaint); color: inherit; }
 @media print {
   body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; background: #fff !important; color: #000 !important; font-size: 11px !important; }
   body::before { display: none !important; }
@@ -385,13 +374,13 @@ a { color: inherit; }
 // ─────────── SMALL COMPONENTS ───────────
 
 const Tag = ({ text, color, t }) => (
-  <span style={{ display: "inline-flex", alignItems: "center", padding: "3px 10px", fontSize: 10, fontFamily: "'Space Mono', monospace", fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: color || t.textMuted, background: t.tagBg, border: `1px solid ${t.border}`, borderRadius: 20 }}>
+  <span style={{ display: "inline-flex", alignItems: "center", padding: "3px 10px", fontSize: 10, fontFamily: "'DM Sans', system-ui, sans-serif", fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: color || t.textMuted, background: t.tagBg, border: `1px solid ${t.border}`, borderRadius: 20 }}>
     {text}
   </span>
 );
 
 const MonoLabel = ({ children, color, t }) => (
-  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: color || t.textDim, marginBottom: 8 }}>
+  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: color || t.textDim, marginBottom: 8 }}>
     {children}
   </div>
 );
@@ -453,7 +442,7 @@ function CiteList({ ids, t }) {
       {list.map((id) => {
         const r = REFERENCES.find((x) => x.id === id);
         const short = r ? r.full.split(".")[0].replace(/,.*$/, "") : id;
-        return <span key={id} title={r?.full || id} style={{ fontSize: 10, fontFamily: "'Space Mono', monospace", color: t.accent, background: `${t.accent}15`, padding: "2px 8px", borderRadius: 10, letterSpacing: 0.5 }}>{short}</span>;
+        return <span key={id} title={r?.full || id} style={{ fontSize: 10, fontFamily: "'DM Sans', system-ui, sans-serif", color: t.accent, background: `${t.accent}15`, padding: "2px 8px", borderRadius: 10, letterSpacing: 0.5 }}>{short}</span>;
       })}
     </div>
   );
@@ -473,10 +462,10 @@ function ActivityCard({ act, sessionId, sessionColor, responses, setResponses, t
         style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 14px", border: "none", background: "transparent", textAlign: "left", color: t.text }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 4 }}>
-            <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: typeColors[act.type], background: `${typeColors[act.type]}18`, padding: "2px 8px", borderRadius: 10 }}>{typeLabels[act.type]}</span>
-            <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim }}>{act.time}</span>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: typeColors[act.type], background: `${typeColors[act.type]}18`, padding: "2px 8px", borderRadius: 10 }}>{typeLabels[act.type]}</span>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim }}>{act.time}</span>
           </div>
-          <div style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Fraunces', Georgia, serif" }}>{act.name}</div>
+          <div style={{ fontSize: 15, fontWeight: 700, fontFamily: "'DM Sans', system-ui, sans-serif" }}>{act.name}</div>
         </div>
         <span style={{ fontSize: 16, color: t.textDim, transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>▾</span>
       </button>
@@ -511,7 +500,7 @@ function SessionSection({ session, responses, setResponses, t }) {
           <span style={{ fontSize: 22 }}>{session.icon}</span>
           <Tag text={`Session ${session.id} · ${session.duration}`} color={session.color} t={t} />
         </div>
-        <h2 style={{ margin: "0 0 4px", fontFamily: "'Fraunces', Georgia, serif", fontSize: 22, fontWeight: 700, letterSpacing: -0.3 }}>{session.title}</h2>
+        <h2 style={{ margin: "0 0 4px", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, letterSpacing: -0.3 }}>{session.title}</h2>
         <p style={{ margin: "0 0 10px", fontSize: 14, color: t.textMuted, fontStyle: "italic" }}>{session.subtitle}</p>
         <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.55 }}>
           <span style={{ color: session.color, fontWeight: 700 }}>Target: </span>{session.targetSkill}
@@ -561,7 +550,7 @@ function SessionSection({ session, responses, setResponses, t }) {
 function ThemeToggle({ dark, toggle, t }) {
   return (
     <button onClick={toggle} className="no-print" aria-label="Toggle theme"
-      style={{ background: t.btnBg, border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 12px", color: t.textMuted, fontSize: 12, fontFamily: "'Space Mono', monospace", letterSpacing: 0.5 }}>
+      style={{ background: t.btnBg, border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 12px", color: t.textMuted, fontSize: 12, fontFamily: "'DM Sans', system-ui, sans-serif", letterSpacing: 0.5 }}>
       {dark ? "☀ Light" : "☾ Dark"}
     </button>
   );
@@ -570,7 +559,7 @@ function ThemeToggle({ dark, toggle, t }) {
 // ─────────── ABOUT MODAL ───────────
 
 function AboutModal({ onClose, t }) {
-  const h3 = { fontFamily: "'Fraunces', Georgia, serif", fontSize: 18, fontWeight: 600, color: t.text, margin: "22px 0 8px", display: "flex", alignItems: "center", gap: 8 };
+  const h3 = { fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 600, color: t.text, margin: "22px 0 8px", display: "flex", alignItems: "center", gap: 8 };
   const p  = { fontSize: 14, color: t.textSub, lineHeight: 1.65, marginBottom: 10 };
   const li = { fontSize: 14, color: t.textSub, lineHeight: 1.65, marginBottom: 4 };
   return (
@@ -582,8 +571,8 @@ function AboutModal({ onClose, t }) {
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ width: 44, height: 44, borderRadius: 12, background: t.gradient, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
             <div>
-              <h2 id="about-title" style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2, margin: 0 }}>About the Autonomy-First Toolkit</h2>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
+              <h2 id="about-title" style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2, margin: 0 }}>About the Autonomy-First Toolkit</h2>
+              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
             </div>
           </div>
           <button onClick={onClose} aria-label="Close" style={{ background: "transparent", border: "none", color: t.textMuted, fontSize: 26, lineHeight: 1, padding: 4 }}>×</button>
@@ -616,7 +605,7 @@ function AboutModal({ onClose, t }) {
             Norton, R. T. (2026). The Autonomy-First Toolkit: PDA-profile intervention planning [Web application]. RTN Communication &amp; Literacy.
           </div>
 
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
           <div aria-hidden="true" style={{ height: 3, borderRadius: 3, background: t.rainbow, marginTop: 14 }} />
         </div>
       </div>
@@ -687,23 +676,23 @@ export default function App() {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 14, marginBottom: 24 }}>
         <div>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: t.textDim, marginBottom: 4 }}>PDA-Profile Practice</div>
-          <h1 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 34, fontWeight: 700, color: t.text, letterSpacing: -0.5, margin: "0 0 6px", lineHeight: 1.1 }}>The Autonomy-First Toolkit</h1>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 1 }}>Declarative Language · CPS Plan B · Unstuck &amp; On Target · Interoception · Polyvagal</div>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: t.textDim, marginBottom: 4 }}>PDA-Profile Practice</div>
+          <h1 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 34, fontWeight: 700, color: t.text, letterSpacing: -0.5, margin: "0 0 6px", lineHeight: 1.1 }}>The Autonomy-First Toolkit</h1>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1 }}>Declarative Language · CPS Plan B · Unstuck &amp; On Target · Interoception · Polyvagal</div>
         </div>
         <ThemeToggle dark={dark} toggle={() => setDark((d) => !d)} t={t} />
       </div>
 
       {/* Action bar */}
       <div className="no-print" style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
-        <button onClick={handlePrint} style={{ padding: "8px 16px", borderRadius: 999, border: "none", background: t.gradient, color: "#fff", fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, boxShadow: "0 3px 12px rgba(138,108,184,0.25)" }}>
+        <button onClick={handlePrint} style={{ padding: "8px 16px", borderRadius: 999, border: "none", background: t.gradient, color: "#fff", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, boxShadow: "0 3px 12px rgba(26,122,122,0.25)" }}>
           🖨 Print / Save PDF
         </button>
-        <button onClick={handleExport} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${t.border}`, background: "transparent", color: t.textMuted, fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
+        <button onClick={handleExport} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${t.border}`, background: "transparent", color: t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
           ⬇ Export JSON
         </button>
         <div style={{ flex: 1 }} />
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5 }}>{totalResponses} response{totalResponses === 1 ? "" : "s"} captured</span>
+        <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5 }}>{totalResponses} response{totalResponses === 1 ? "" : "s"} captured</span>
       </div>
 
       {/* Tabs */}
@@ -714,8 +703,8 @@ export default function App() {
             border: `1px solid ${tab === tb.key ? "transparent" : t.border}`,
             background: tab === tb.key ? t.gradient : "transparent",
             color: tab === tb.key ? "#fff" : t.textMuted,
-            fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 0.5,
-            boxShadow: tab === tb.key ? "0 3px 12px rgba(138,108,184,0.25)" : "none",
+            fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5,
+            boxShadow: tab === tb.key ? "0 3px 12px rgba(26,122,122,0.25)" : "none",
           }}>{tb.label}</button>
         ))}
       </div>
@@ -732,7 +721,7 @@ export default function App() {
 
           {/* Student Profile */}
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, marginBottom: 18 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 20, margin: "0 0 16px", color: t.text }}>Student Profile</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, margin: "0 0 16px", color: t.text }}>Student Profile</h3>
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 10, marginBottom: 10 }}>
               <TextInput label="Name / Initials / Code" value={profile.name} onChange={(v) => setProfile((p) => ({ ...p, name: v }))} rows={1} t={t} />
               <TextInput label="Age" value={profile.age} onChange={(v) => setProfile((p) => ({ ...p, age: v }))} rows={1} t={t} />
@@ -747,11 +736,11 @@ export default function App() {
 
           {/* Core Principles */}
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, marginBottom: 18 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 20, margin: "0 0 6px", color: t.text }}>Core Principles</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, margin: "0 0 6px", color: t.text }}>Core Principles</h3>
             <div style={{ fontSize: 12.5, color: t.textMuted, marginBottom: 14, fontStyle: "italic" }}>Review before each session.</div>
             {CORE_PRINCIPLES.map((p, i) => (
               <div key={i} style={{ padding: "12px 14px", marginBottom: 8, background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10 }}>
-                <div style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 15, fontWeight: 700, color: t.accent, marginBottom: 2 }}>{p.title}</div>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 15, fontWeight: 700, color: t.accent, marginBottom: 2 }}>{p.title}</div>
                 <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.6 }}>{p.desc}</div>
                 <CiteList ids={p.cite} t={t} />
               </div>
@@ -760,7 +749,7 @@ export default function App() {
 
           {/* Sample IEP Goals */}
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 20, margin: "0 0 14px", color: t.text }}>Sample IEP Goal Language</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, margin: "0 0 14px", color: t.text }}>Sample IEP Goal Language</h3>
             {IEP_GOALS.map((g, i) => (
               <div key={i} style={{ padding: "12px 14px", marginBottom: 8, background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10 }}>
                 <MonoLabel t={t} color={t.accent}>{g.area}</MonoLabel>
@@ -793,7 +782,7 @@ export default function App() {
           {QUICK_ACTIVITIES.map((a, i) => (
             <div key={i} className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 12, padding: 16, marginBottom: 12 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, marginBottom: 8 }}>
-                <div style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 16, fontWeight: 700, color: t.text }}>{a.name}</div>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 16, fontWeight: 700, color: t.text }}>{a.name}</div>
                 <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
                   <Tag text={a.skill} color={t.accent} t={t} />
                   <Tag text={a.time} t={t} />
@@ -815,7 +804,7 @@ export default function App() {
             Print this page as a standalone cheat sheet for yourself or to share with classroom staff. Adapted from Murphy's <em>Declarative Language Handbook</em>.
           </div>
 
-          <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 22, margin: "0 0 12px", color: t.text }}>Imperative → Declarative Swaps</h3>
+          <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, margin: "0 0 12px", color: t.text }}>Imperative → Declarative Swaps</h3>
           {DECLARATIVE_REF.map((item, i) => (
             <div key={i} className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", marginBottom: 8 }}>
               <MonoLabel t={t}>{item.cat}</MonoLabel>
@@ -825,7 +814,7 @@ export default function App() {
           ))}
 
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, marginTop: 20 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 18, margin: "0 0 12px", color: t.accent }}>PDA-Profile Pro Tips</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, margin: "0 0 12px", color: t.accent }}>PDA-Profile Pro Tips</h3>
             {PRO_TIPS.map((tip, i) => (
               <div key={i} style={{ padding: "8px 12px", marginBottom: 4, borderLeft: `2px solid ${t.accent}`, fontSize: 13, color: t.textSub, lineHeight: 1.6 }}>
                 {tip.text}
@@ -835,7 +824,7 @@ export default function App() {
           </div>
 
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, marginTop: 16 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 18, margin: "0 0 10px", color: t.text }}>Your own declarative-language notes</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, margin: "0 0 10px", color: t.text }}>Your own declarative-language notes</h3>
             <TextInput label="Swaps that worked well with this student" value={responses["ref-worked"] || ""} onChange={(v) => setResponses((p) => ({ ...p, "ref-worked": v }))} rows={3} t={t} />
             <TextInput label="Phrases to avoid with this student"       value={responses["ref-avoid"]  || ""} onChange={(v) => setResponses((p) => ({ ...p, "ref-avoid":  v }))} rows={3} t={t} />
           </div>
@@ -850,7 +839,7 @@ export default function App() {
           </div>
 
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, marginBottom: 18 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 20, margin: "0 0 4px", color: t.text }}>Staff Quick Guide</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, margin: "0 0 4px", color: t.text }}>Staff Quick Guide</h3>
             <p style={{ fontSize: 12.5, color: t.textMuted, margin: "0 0 14px", fontStyle: "italic" }}>Customize and print for each team member.</p>
 
             <TextInput label="Student (initials or code)" value={responses["staff-name"] || profile.name} onChange={(v) => setResponses((p) => ({ ...p, "staff-name": v }))} rows={1} t={t} />
@@ -872,10 +861,10 @@ export default function App() {
               <TextInput label="" value={responses["staff-triggers"] || profile.triggers} onChange={(v) => setResponses((p) => ({ ...p, "staff-triggers": v }))} rows={2} t={t} />
             </div>
 
-            <h4 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 17, margin: "0 0 10px", color: t.text }}>The 5 shifts that help most</h4>
+            <h4 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 17, margin: "0 0 10px", color: t.text }}>The 5 shifts that help most</h4>
             {STAFF_SHIFTS.map((s, i) => (
               <div key={i} style={{ padding: "10px 12px", marginBottom: 6, background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 8 }}>
-                <div style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 14, fontWeight: 700, color: t.accent }}>{s.shift}</div>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, fontWeight: 700, color: t.accent }}>{s.shift}</div>
                 <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.55 }}>{s.ex}</div>
               </div>
             ))}
@@ -887,7 +876,7 @@ export default function App() {
           </div>
 
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20 }}>
-            <h3 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 18, margin: "0 0 12px", color: t.text }}>Key Resources for Staff</h3>
+            <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, margin: "0 0 12px", color: t.text }}>Key Resources for Staff</h3>
             {STAFF_RESOURCES.map((r, i) => (
               <div key={i} style={{ padding: "10px 12px", marginBottom: 6, background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 8, fontSize: 13, color: t.textSub, lineHeight: 1.55 }}>
                 <strong style={{ color: t.text }}>{r.name}</strong> ({r.author}) — {r.note} {r.url && <a href={r.url} target="_blank" rel="noopener noreferrer" style={{ color: t.accent }}>{r.url.replace(/^https?:\/\//, "")}</a>}
@@ -914,9 +903,9 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer style={{ textAlign: "center", marginTop: 48, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5, lineHeight: 1.8 }}>
+      <footer style={{ textAlign: "center", marginTop: 48, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, lineHeight: 1.8 }}>
         <button onClick={() => setShowAbout(true)} className="no-print" aria-label="About this resource"
-          style={{ background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 16px", fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
+          style={{ background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 16px", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
           📖 About this resource
         </button>
         <p>Rachel Terra Norton, MS, CCC-SLP</p>
