@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 
 // ─────────── THEME — Editorial Calm ───────────
 
-const GRADIENT = "linear-gradient(90deg, #0e4a4a 0%, #1a7a7a 50%, #4db8b8 100%)";
-const RAINBOW  = "linear-gradient(90deg, #0e4a4a 0%, #1a7a7a 50%, #4db8b8 100%)";
+const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
+const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
 
 // ── Palette ported from RTN Eval Intake design system ──
 // teal #1a7a7a / tealDeep #0e4a4a / tealFaint #f0faf9 / gold #b8860b / navy #1b3a4b
