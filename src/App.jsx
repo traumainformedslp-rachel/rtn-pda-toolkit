@@ -3,7 +3,6 @@ import { useState, useEffect, useMemo } from "react";
 // ─────────── THEME — RdYlBl Design System ───────────
 // 8-stop diverging palette: #d73027 #f46d43 #fdae61 #7cca7c #abd9e9 #4b6ce4 #4575b4 #313695
 
-const GRADIENT = "linear-gradient(90deg, #4575b4 0%, #abd9e9 50%, #7cca7c 100%)";
 const RAINBOW  = "linear-gradient(90deg, #d73027, #f46d43, #fdae61, #7cca7c, #abd9e9, #4b6ce4, #4575b4, #313695)";
 
 const T = {
@@ -12,14 +11,14 @@ const T = {
     text: "#e4e8f4", textMuted: "#8e96b8", textDim: "#5c6488", textSub: "#b4bcd6",
     accent: "#6b8ef0", btnBg: "#1c2440", tagBg: "#1e2748",
     checkBg: "#1e2b50", checkColor: "#8db4f8",
-    gradient: GRADIENT, rainbow: RAINBOW,
+    rainbow: RAINBOW,
   },
   light: {
     bg: "#f0f2f5", card: "#ffffff", border: "#c0c6d0", inputBg: "#f4f6fa",
     text: "#1a1a2a", textMuted: "#3a3c50", textDim: "#6b7280", textSub: "#3a3c50",
     accent: "#313695", btnBg: "#f4f6fa", tagBg: "#e8eff7",
     checkBg: "#dde4f2", checkColor: "#252a70",
-    gradient: GRADIENT, rainbow: RAINBOW,
+    rainbow: RAINBOW,
   },
 };
 
@@ -421,11 +420,12 @@ function SelectPills({ label, options, value, onChange, t, color }) {
 }
 
 const ENERGY_ZONES = [
-  { level: 1, label: "Sleepy / Still", seenAs: "sluggish", feelsLike: "energy is drained", fits: "beginning or end of day, hungry, sick", color: "#4575b4" },
-  { level: 2, label: "Settled / Calm", seenAs: "relaxed", feelsLike: "slow, steady, pulsing energy", fits: "reading, listening to music", color: "#abd9e9" },
-  { level: 3, label: "Focused / Purposeful", seenAs: "activity oriented and engaged", feelsLike: "directed flow of energy", fits: "hobby or preferred activity, class", color: "#7cca7c" },
-  { level: 4, label: "Amped Up / Fidgety", seenAs: "hyper", feelsLike: "expanding energy", fits: "PE class, celebration", color: "#fdae61" },
-  { level: 5, label: "Maxed Out / Frenzied", seenAs: "not available for learning", feelsLike: "bursting energy or shut down", fits: "upsetting event, recess", color: "#d73027" },
+  { level: 0, label: "Asleep", face: "😴", seenAs: "asleep", feelsLike: "no energy", fits: "not applicable to session", color: "#313695" },
+  { level: 1, label: "Sleepy / Still", face: "😶", seenAs: "sluggish", feelsLike: "energy is drained", fits: "beginning or end of day, hungry, sick", color: "#4b6ce4" },
+  { level: 2, label: "Settled / Calm", face: "🙂", seenAs: "relaxed", feelsLike: "slow, steady, pulsing energy", fits: "reading, listening to music", color: "#abd9e9" },
+  { level: 3, label: "Focused / Purposeful", face: "😊", seenAs: "activity oriented and engaged", feelsLike: "directed flow of energy", fits: "hobby or preferred activity, class", color: "#7cca7c" },
+  { level: 4, label: "Amped Up / Fidgety", face: "😬", seenAs: "hyper", feelsLike: "expanding energy", fits: "PE class, celebration", color: "#fdae61" },
+  { level: 5, label: "Maxed Out / Frenzied", face: "🤯", seenAs: "not available for learning", feelsLike: "bursting energy or shut down", fits: "upsetting event, recess", color: "#d73027" },
 ];
 
 function EnergyMeter({ value, onChange, t, who = "student" }) {
@@ -444,9 +444,10 @@ function EnergyMeter({ value, onChange, t, who = "student" }) {
                 background: sel ? z.color : "transparent",
                 display: "flex", flexDirection: "column", alignItems: "center", gap: 3,
                 transition: "all 0.15s",
-                borderRight: z.level < 5 ? `1px solid ${t.border}` : "none",
+                borderRight: z.level < ENERGY_ZONES.length - 1 ? `1px solid ${t.border}` : "none",
               }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: textColor, fontFamily: "'DM Sans', system-ui, sans-serif" }}>{z.level}</span>
+              <span style={{ fontSize: 20, filter: sel ? "none" : "grayscale(0.5) opacity(0.6)" }}>{z.face}</span>
+              <span style={{ fontSize: 10, fontWeight: 700, color: textColor, fontFamily: "'DM Sans', system-ui, sans-serif" }}>{z.level}</span>
               <span style={{ fontSize: 8, fontWeight: 600, color: sel ? textColor : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", textTransform: "uppercase", letterSpacing: 0.2, lineHeight: 1.2, textAlign: "center" }}>{z.label}</span>
             </button>
           );
@@ -618,7 +619,7 @@ function AboutModal({ onClose, t }) {
       <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 18, maxWidth: 640, width: "100%", maxHeight: "90vh", overflowY: "auto", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, padding: "22px 26px 14px", borderBottom: `1px solid ${t.border}` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: t.gradient, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
+            <div style={{ width: 44, height: 44, borderRadius: 12, background: t.rainbow, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
             <div>
               <h2 id="about-title" style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2, margin: 0 }}>About the Autonomy-First Toolkit</h2>
               <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN | Speech, Language &amp; Literacy</div>
