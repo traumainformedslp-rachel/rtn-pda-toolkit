@@ -1,24 +1,24 @@
 import { useState, useEffect, useMemo } from "react";
 
-// ─────────── THEME — RdYlBl Design System ───────────
-// 8-stop diverging palette: #d73027 #f46d43 #fdae61 #7cca7c #abd9e9 #4b6ce4 #4575b4 #313695
+// ─────────── THEME — Spectral Design System ───────────
+// 9-stop diverging palette: #9e0142 #d53e4f #f46d43 #fdae61 #fee08b #abdda4 #66c2a5 #3288bd #5e4fa2
 
-const RAINBOW  = "linear-gradient(90deg, #d73027, #f46d43, #fdae61, #7cca7c, #abd9e9, #4b6ce4, #4575b4, #313695)";
+const SPECTRAL = "linear-gradient(90deg, #9e0142, #d53e4f, #f46d43, #fdae61, #fee08b, #abdda4, #66c2a5, #3288bd, #5e4fa2)";
 
 const T = {
   dark: {
-    bg: "#0f1528", card: "#181e36", border: "#2a3254", inputBg: "#121830",
-    text: "#e4e8f4", textMuted: "#8e96b8", textDim: "#5c6488", textSub: "#b4bcd6",
-    accent: "#6b8ef0", btnBg: "#1c2440", tagBg: "#1e2748",
-    checkBg: "#1e2b50", checkColor: "#8db4f8",
-    rainbow: RAINBOW,
+    bg: "#120f20", card: "#1c1832", border: "#302a50", inputBg: "#161230",
+    text: "#e8e4f4", textMuted: "#9e8eb8", textDim: "#6e5c88", textSub: "#c0b4d6",
+    accent: "#9b8ef0", active: "#fdae61", activeFg: "#1a1a2a", btnBg: "#201c40", tagBg: "#241e48",
+    checkBg: "#261e50", checkColor: "#b48df8",
+    rainbow: SPECTRAL,
   },
   light: {
-    bg: "#f0f2f5", card: "#ffffff", border: "#c0c6d0", inputBg: "#f4f6fa",
-    text: "#1a1a2a", textMuted: "#3a3c50", textDim: "#6b7280", textSub: "#3a3c50",
-    accent: "#313695", btnBg: "#f4f6fa", tagBg: "#e8eff7",
-    checkBg: "#dde4f2", checkColor: "#252a70",
-    rainbow: RAINBOW,
+    bg: "#f4f0f5", card: "#ffffff", border: "#c0b8d0", inputBg: "#f6f4fa",
+    text: "#1a1a2a", textMuted: "#3a3050", textDim: "#6b6280", textSub: "#3a3050",
+    accent: "#5e4fa2", active: "#fdae61", activeFg: "#1a1a2a", btnBg: "#f6f4fa", tagBg: "#efe8f7",
+    checkBg: "#e2ddf2", checkColor: "#4a3a80",
+    rainbow: SPECTRAL,
   },
 };
 
@@ -62,7 +62,7 @@ const CORE_PRINCIPLES = [
 const SESSIONS = [
   {
     id: 1, title: "The Expert Within", subtitle: "Strengths-Based Self-Awareness", duration: "30 min", icon: "🧠",
-    color: "#4575b4",
+    color: "#5e4fa2",
     targetSkill: "Self-awareness, strategy identification, strengths-based identity",
     evidence: "Strengths-based practice; Self-Determination Theory (Deci & Ryan, 2000); Declarative Language (Murphy, 2020)",
     cite: ["deciryan2000", "murphy2020"],
@@ -96,7 +96,7 @@ const SESSIONS = [
   },
   {
     id: 2, title: "The Flexibility Lab", subtitle: "Open-Mind Science Experiments", duration: "30 min", icon: "🔬",
-    color: "#4b6ce4",
+    color: "#3288bd",
     targetSkill: "Cognitive flexibility, Plan A / Plan B thinking, tolerance of unexpected change",
     evidence: "Unstuck & On Target RCT (Kenworthy et al., 2014); flexibility training in autistic EF curricula",
     cite: ["cannon2011", "kenworthy2014"],
@@ -134,7 +134,7 @@ const SESSIONS = [
   },
   {
     id: 3, title: "The Co-Pilot Protocol", subtitle: "Collaborative Negotiation with Adults", duration: "30 min", icon: "✈️",
-    color: "#7cca7c",
+    color: "#66c2a5",
     targetSkill: "Self-advocacy, collaborative problem-solving, authentic negotiation",
     evidence: "Collaborative & Proactive Solutions — Plan B (Greene, 2014, 2021); Unstuck Lessons 9 & 11",
     cite: ["greene2014", "greene2021", "cannon2011"],
@@ -232,7 +232,7 @@ const SESSIONS = [
   },
   {
     id: 6, title: "The Mission Control Center", subtitle: "Generalization, Self-Monitoring & Real-World Practice", duration: "30 min", icon: "🚀",
-    color: "#d73027",
+    color: "#d53e4f",
     targetSkill: "Self-monitoring, generalization, independence, goal-directed behavior",
     evidence: "Unstuck GWPDC framework (Cannon et al., 2011; Kenworthy et al., 2014 RCT); Self-Determination Theory",
     cite: ["cannon2011", "kenworthy2014", "deciryan2000"],
@@ -353,7 +353,7 @@ body {
 }
 input, textarea, button, select { font-family: inherit; }
 textarea:focus, input:focus { outline: none; }
-:focus-visible { outline: 2px solid #4575b4 !important; outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid #5e4fa2 !important; outline-offset: 3px; border-radius: 2px; }
 button { cursor: pointer; }
 a { color: inherit; }
 ::selection { background: var(--rtn-tealFaint); color: inherit; }
@@ -420,12 +420,12 @@ function SelectPills({ label, options, value, onChange, t, color }) {
 }
 
 const ENERGY_ZONES = [
-  { level: 0, label: "Asleep", face: "😴", seenAs: "asleep", feelsLike: "no energy", fits: "not applicable to session", color: "#313695" },
-  { level: 1, label: "Sleepy / Still", face: "😶", seenAs: "sluggish", feelsLike: "energy is drained", fits: "beginning or end of day, hungry, sick", color: "#4b6ce4" },
-  { level: 2, label: "Settled / Calm", face: "🙂", seenAs: "relaxed", feelsLike: "slow, steady, pulsing energy", fits: "reading, listening to music", color: "#abd9e9" },
-  { level: 3, label: "Focused / Purposeful", face: "😊", seenAs: "activity oriented and engaged", feelsLike: "directed flow of energy", fits: "hobby or preferred activity, class", color: "#7cca7c" },
-  { level: 4, label: "Amped Up / Fidgety", face: "😬", seenAs: "hyper", feelsLike: "expanding energy", fits: "PE class, celebration", color: "#fdae61" },
-  { level: 5, label: "Maxed Out / Frenzied", face: "🤯", seenAs: "not available for learning", feelsLike: "bursting energy or shut down", fits: "upsetting event, recess", color: "#d73027" },
+  { level: 0, label: "Asleep", face: "😴", seenAs: "asleep", feelsLike: "no energy", fits: "not applicable to session", color: "#5e4fa2" },
+  { level: 1, label: "Sleepy / Still", face: "😶", seenAs: "sluggish", feelsLike: "energy is drained", fits: "beginning or end of day, hungry, sick", color: "#3288bd" },
+  { level: 2, label: "Settled / Calm", face: "🙂", seenAs: "relaxed", feelsLike: "slow, steady, pulsing energy", fits: "reading, listening to music", color: "#66c2a5" },
+  { level: 3, label: "Focused / Purposeful", face: "😊", seenAs: "activity oriented and engaged", feelsLike: "directed flow of energy", fits: "hobby or preferred activity, class", color: "#fee08b" },
+  { level: 4, label: "Amped Up / Fidgety", face: "😬", seenAs: "hyper", feelsLike: "expanding energy", fits: "PE class, celebration", color: "#f46d43" },
+  { level: 5, label: "Maxed Out / Frenzied", face: "🤯", seenAs: "not available for learning", feelsLike: "bursting energy or shut down", fits: "upsetting event, recess", color: "#9e0142" },
 ];
 
 function EnergyMeter({ value, onChange, t, who = "student" }) {
@@ -476,8 +476,8 @@ function SwapBox({ swaps, t, color }) {
       <MonoLabel t={t} color={color}>Declarative Language Swaps</MonoLabel>
       {swaps.map((s, i) => (
         <div key={i} style={{ marginBottom: i < swaps.length - 1 ? 8 : 0, fontSize: 13, lineHeight: 1.5 }}>
-          <div style={{ color: "#d73027" }}><span style={{ fontWeight: 700 }}>✕ </span>{s.old}</div>
-          <div style={{ color: "#2d7a2d" }}><span style={{ fontWeight: 700 }}>✓ </span>{s.new}</div>
+          <div style={{ color: "#d53e4f" }}><span style={{ fontWeight: 700 }}>✕ </span>{s.old}</div>
+          <div style={{ color: "#66c2a5" }}><span style={{ fontWeight: 700 }}>✓ </span>{s.new}</div>
         </div>
       ))}
     </div>
@@ -722,9 +722,6 @@ export default function App() {
 
   return (
     <div style={{ maxWidth: 760, margin: "0 auto", padding: "32px 20px 60px" }}>
-      {/* Rainbow accent */}
-      <div aria-hidden="true" style={{ height: 4, borderRadius: 3, background: t.rainbow, marginBottom: 20 }} />
-
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 14, marginBottom: 24 }}>
         <div>
@@ -752,9 +749,9 @@ export default function App() {
         {tabs.map((tb) => (
           <button key={tb.key} onClick={() => setTab(tb.key)} style={{
             padding: "8px 16px", borderRadius: 6,
-            border: `1.5px solid ${tab === tb.key ? t.accent : t.border}`,
-            background: tab === tb.key ? t.accent : "transparent",
-            color: tab === tb.key ? "#fff" : t.textMuted,
+            border: `1.5px solid ${tab === tb.key ? t.active : t.border}`,
+            background: tab === tb.key ? t.active : "transparent",
+            color: tab === tb.key ? t.activeFg : t.textMuted,
             fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5,
           }}>{tb.label}</button>
         ))}
@@ -1011,7 +1008,7 @@ export default function App() {
                     </button>
                     {session.id < 6 && (
                       <button onClick={() => { setActiveSessionId(session.id + 1); setActiveActivityIdx(-1); }}
-                        style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: t.accent, color: "#fff", fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", cursor: "pointer" }}>
+                        style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: t.active, color: t.activeFg, fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", cursor: "pointer" }}>
                         Next Session →
                       </button>
                     )}
@@ -1058,8 +1055,8 @@ export default function App() {
           {DECLARATIVE_REF.map((item, i) => (
             <div key={i} className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", marginBottom: 8 }}>
               <MonoLabel t={t}>{item.cat}</MonoLabel>
-              <div style={{ fontSize: 13, color: "#d73027", textDecoration: "line-through", opacity: 0.7, marginBottom: 4 }}>✕ {item.old}</div>
-              <div style={{ fontSize: 14, color: "#2d7a2d", fontWeight: 500, lineHeight: 1.6 }}>✓ {item.new}</div>
+              <div style={{ fontSize: 13, color: "#d53e4f", textDecoration: "line-through", opacity: 0.7, marginBottom: 4 }}>✕ {item.old}</div>
+              <div style={{ fontSize: 14, color: "#66c2a5", fontWeight: 500, lineHeight: 1.6 }}>✓ {item.new}</div>
             </div>
           ))}
 
@@ -1101,8 +1098,8 @@ export default function App() {
               </div>
             </div>
 
-            <div style={{ background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid #7cca7c`, borderRadius: 10, padding: 14, marginBottom: 12 }}>
-              <MonoLabel t={t} color="#7cca7c">This student's strengths</MonoLabel>
+            <div style={{ background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid #66c2a5`, borderRadius: 10, padding: 14, marginBottom: 12 }}>
+              <MonoLabel t={t} color="#66c2a5">This student's strengths</MonoLabel>
               <TextInput label="" value={responses["staff-strengths"] || profile.strengths} onChange={(v) => setResponses((p) => ({ ...p, "staff-strengths": v }))} rows={2} t={t} />
             </div>
 
