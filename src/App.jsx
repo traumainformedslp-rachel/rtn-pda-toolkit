@@ -1,25 +1,24 @@
 import { useState, useEffect, useMemo } from "react";
 
-// ─────────── THEME — Editorial Calm ───────────
+// ─────────── THEME — RdYlBl Design System ───────────
+// 8-stop diverging palette: #d73027 #f46d43 #fdae61 #7cca7c #abd9e9 #4b6ce4 #4575b4 #313695
 
-const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
-const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
+const GRADIENT = "linear-gradient(90deg, #4575b4 0%, #abd9e9 50%, #7cca7c 100%)";
+const RAINBOW  = "linear-gradient(90deg, #d73027, #f46d43, #fdae61, #7cca7c, #abd9e9, #4b6ce4, #4575b4, #313695)";
 
-// ── Palette ported from RTN Eval Intake design system ──
-// teal #1a7a7a / tealDeep #0e4a4a / tealFaint #f0faf9 / gold #b8860b / navy #1b3a4b
 const T = {
   dark: {
-    bg: "#0e2424", card: "#163434", border: "#1f4040", inputBg: "#0e2424",
-    text: "#e6efef", textMuted: "#8eaeae", textDim: "#5c7d7d", textSub: "#c0d4d4",
-    accent: "#4db8b8", btnBg: "#163434", tagBg: "#1a4040",
-    checkBg: "#1a4d4d", checkColor: "#7edede",
+    bg: "#0f1528", card: "#181e36", border: "#2a3254", inputBg: "#121830",
+    text: "#e4e8f4", textMuted: "#8e96b8", textDim: "#5c6488", textSub: "#b4bcd6",
+    accent: "#6b8ef0", btnBg: "#1c2440", tagBg: "#1e2748",
+    checkBg: "#1e2b50", checkColor: "#8db4f8",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#f0f4f4", card: "#ffffff", border: "#d4dfdf", inputBg: "#f7fafa",
-    text: "#1c2d2d", textMuted: "#3d5555", textDim: "#7a9191", textSub: "#3d5555",
-    accent: "#1a7a7a", btnBg: "#f7fafa", tagBg: "#f0faf9",
-    checkBg: "#e0f2f1", checkColor: "#0e4a4a",
+    bg: "#f0f2f5", card: "#ffffff", border: "#c0c6d0", inputBg: "#f4f6fa",
+    text: "#1a1a2a", textMuted: "#3a3c50", textDim: "#6b7280", textSub: "#3a3c50",
+    accent: "#313695", btnBg: "#f4f6fa", tagBg: "#e8eff7",
+    checkBg: "#dde4f2", checkColor: "#252a70",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
@@ -64,7 +63,7 @@ const CORE_PRINCIPLES = [
 const SESSIONS = [
   {
     id: 1, title: "The Expert Within", subtitle: "Strengths-Based Self-Awareness", duration: "30 min", icon: "🧠",
-    color: "#4f9c74",
+    color: "#4575b4",
     targetSkill: "Self-awareness, strategy identification, strengths-based identity",
     evidence: "Strengths-based practice; Self-Determination Theory (Deci & Ryan, 2000); Declarative Language (Murphy, 2020)",
     cite: ["deciryan2000", "murphy2020"],
@@ -97,7 +96,7 @@ const SESSIONS = [
   },
   {
     id: 2, title: "The Flexibility Lab", subtitle: "Open-Mind Science Experiments", duration: "30 min", icon: "🔬",
-    color: "#7a5ea8",
+    color: "#4b6ce4",
     targetSkill: "Cognitive flexibility, Plan A / Plan B thinking, tolerance of unexpected change",
     evidence: "Unstuck & On Target RCT (Kenworthy et al., 2014); flexibility training in autistic EF curricula",
     cite: ["cannon2011", "kenworthy2014"],
@@ -135,7 +134,7 @@ const SESSIONS = [
   },
   {
     id: 3, title: "The Co-Pilot Protocol", subtitle: "Collaborative Negotiation with Adults", duration: "30 min", icon: "✈️",
-    color: "#b87c4e",
+    color: "#7cca7c",
     targetSkill: "Self-advocacy, collaborative problem-solving, authentic negotiation",
     evidence: "Collaborative & Proactive Solutions — Plan B (Greene, 2014, 2021); Unstuck Lessons 9 & 11",
     cite: ["greene2014", "greene2021", "cannon2011"],
@@ -168,7 +167,7 @@ const SESSIONS = [
   },
   {
     id: 4, title: "The Social Detective Agency", subtitle: "Reading the Room Without Losing Yourself", duration: "30 min", icon: "🔍",
-    color: "#5a8aaa",
+    color: "#fdae61",
     targetSkill: "Situational awareness and perspective-taking — without masking or forced conformity",
     evidence: "Double Empathy Problem (Milton, 2012); neurodivergence-informed practice (Chapman & Botha, 2023)",
     cite: ["milton2012", "chapman2023"],
@@ -200,7 +199,7 @@ const SESSIONS = [
   },
   {
     id: 5, title: "The Body Scientist", subtitle: "Interoception Without the Interrogation", duration: "30 min", icon: "🫀",
-    color: "#c47086",
+    color: "#f46d43",
     targetSkill: "Interoception, self-regulation, body–brain connection",
     evidence: "Mahler Interoception Curriculum RCT evidence (Mahler et al., 2022, 2024); Polyvagal Theory (Porges, 2011)",
     cite: ["mahler2019", "mahler2022", "mahler2024", "porges2011"],
@@ -233,7 +232,7 @@ const SESSIONS = [
   },
   {
     id: 6, title: "The Mission Control Center", subtitle: "Generalization, Self-Monitoring & Real-World Practice", duration: "30 min", icon: "🚀",
-    color: "#b89446",
+    color: "#d73027",
     targetSkill: "Self-monitoring, generalization, independence, goal-directed behavior",
     evidence: "Unstuck GWPDC framework (Cannon et al., 2011; Kenworthy et al., 2014 RCT); Self-Determination Theory",
     cite: ["cannon2011", "kenworthy2014", "deciryan2000"],
@@ -347,14 +346,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 [data-theme="dark"] {
-  --rtn-tealFaint: #1a4040;
+  --rtn-tealFaint: #1e2748;
 }
 :root {
-  --rtn-tealFaint: #f0faf9;
+  --rtn-tealFaint: #e8eff7;
 }
 input, textarea, button, select { font-family: inherit; }
 textarea:focus, input:focus { outline: none; }
-:focus-visible { outline: 2px solid #1a7a7a !important; outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid #4575b4 !important; outline-offset: 3px; border-radius: 2px; }
 button { cursor: pointer; }
 a { color: inherit; }
 ::selection { background: var(--rtn-tealFaint); color: inherit; }
@@ -426,8 +425,8 @@ function SwapBox({ swaps, t, color }) {
       <MonoLabel t={t} color={color}>Declarative Language Swaps</MonoLabel>
       {swaps.map((s, i) => (
         <div key={i} style={{ marginBottom: i < swaps.length - 1 ? 8 : 0, fontSize: 13, lineHeight: 1.5 }}>
-          <div style={{ color: "#c47086" }}><span style={{ fontWeight: 700 }}>✕ </span>{s.old}</div>
-          <div style={{ color: "#4f9c74" }}><span style={{ fontWeight: 700 }}>✓ </span>{s.new}</div>
+          <div style={{ color: "#d73027" }}><span style={{ fontWeight: 700 }}>✕ </span>{s.old}</div>
+          <div style={{ color: "#2d7a2d" }}><span style={{ fontWeight: 700 }}>✓ </span>{s.new}</div>
         </div>
       ))}
     </div>
@@ -454,7 +453,7 @@ function ActivityCard({ act, sessionId, sessionColor, responses, setResponses, t
   const [open, setOpen] = useState(false);
   const key = `s${sessionId}-${act.name}`;
   const typeLabels  = { opening: "Opening", core: "Core Activity", closing: "Closing" };
-  const typeColors  = { opening: "#e89b2d", core: sessionColor, closing: t.textMuted };
+  const typeColors  = { opening: "#fdae61", core: sessionColor, closing: t.textMuted };
 
   return (
     <div className="section-card" style={{ background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 12, marginBottom: 12, overflow: "hidden" }}>
@@ -493,7 +492,7 @@ function ActivityCard({ act, sessionId, sessionColor, responses, setResponses, t
 function SessionSection({ session, responses, setResponses, t }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderLeft: `3px solid ${session.color}`, borderRadius: 14, marginBottom: 18, overflow: "hidden" }}>
+    <div className="section-card" style={{ background: t.card, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid ${session.color}`, borderRadius: 14, marginBottom: 18, overflow: "hidden" }}>
       <button onClick={() => setOpen(!open)} className="no-print"
         style={{ width: "100%", border: "none", background: "transparent", padding: "18px 20px", textAlign: "left", color: t.text }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 6 }}>
@@ -550,8 +549,8 @@ function SessionSection({ session, responses, setResponses, t }) {
 function ThemeToggle({ dark, toggle, t }) {
   return (
     <button onClick={toggle} className="no-print" aria-label="Toggle theme"
-      style={{ background: t.btnBg, border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 12px", color: t.textMuted, fontSize: 12, fontFamily: "'DM Sans', system-ui, sans-serif", letterSpacing: 0.5 }}>
-      {dark ? "☀ Light" : "☾ Dark"}
+      style={{ background: t.btnBg, border: `1.5px solid ${t.border}`, borderRadius: 6, padding: "6px 12px", color: t.textMuted, fontSize: 12, fontFamily: "'DM Sans', system-ui, sans-serif", letterSpacing: 0.5 }}>
+      {dark ? "Light" : "Dark"}
     </button>
   );
 }
@@ -572,7 +571,7 @@ function AboutModal({ onClose, t }) {
             <div style={{ width: 44, height: 44, borderRadius: 12, background: t.gradient, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
             <div>
               <h2 id="about-title" style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2, margin: 0 }}>About the Autonomy-First Toolkit</h2>
-              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
+              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN | Speech, Language &amp; Literacy</div>
             </div>
           </div>
           <button onClick={onClose} aria-label="Close" style={{ background: "transparent", border: "none", color: t.textMuted, fontSize: 26, lineHeight: 1, padding: 4 }}>×</button>
@@ -602,7 +601,7 @@ function AboutModal({ onClose, t }) {
 
           <h3 style={h3}><span>📎</span>Citation</h3>
           <div style={{ fontSize: 13, color: t.textSub, fontStyle: "italic", background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", lineHeight: 1.6 }}>
-            Norton, R. T. (2026). The Autonomy-First Toolkit: PDA-profile intervention planning [Web application]. RTN Communication &amp; Literacy.
+            Norton, R. T. (2026). The Autonomy-First Toolkit: PDA-profile intervention planning [Web application]. RTN | Speech, Language &amp; Literacy.
           </div>
 
           <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
@@ -623,6 +622,8 @@ export default function App() {
   const [showAbout, setShowAbout]     = useState(false);
   const [responses, setResponses]     = useState({});
   const [profile, setProfile]         = useState({ name: "", age: "", grade: "", interests: "", strengths: "", triggers: "", currentGoals: "", staffNotes: "" });
+  const [activeSessionId, setActiveSessionId] = useState(1);
+  const [activeActivityIdx, setActiveActivityIdx] = useState(-1); // -1 = session overview/pre-notes
 
   const t = dark ? T.dark : T.light;
 
@@ -685,11 +686,11 @@ export default function App() {
 
       {/* Action bar */}
       <div className="no-print" style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
-        <button onClick={handlePrint} style={{ padding: "8px 16px", borderRadius: 999, border: "none", background: t.gradient, color: "#fff", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, boxShadow: "0 3px 12px rgba(26,122,122,0.25)" }}>
-          🖨 Print / Save PDF
+        <button onClick={handlePrint} style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: t.accent, color: "#fff", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
+          Print / Save PDF
         </button>
-        <button onClick={handleExport} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${t.border}`, background: "transparent", color: t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
-          ⬇ Export JSON
+        <button onClick={handleExport} style={{ padding: "8px 16px", borderRadius: 6, border: `1.5px solid ${t.border}`, background: "transparent", color: t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
+          Export JSON
         </button>
         <div style={{ flex: 1 }} />
         <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5 }}>{totalResponses} response{totalResponses === 1 ? "" : "s"} captured</span>
@@ -699,12 +700,11 @@ export default function App() {
       <div className="no-print" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 20 }}>
         {tabs.map((tb) => (
           <button key={tb.key} onClick={() => setTab(tb.key)} style={{
-            padding: "8px 16px", borderRadius: 999,
-            border: `1px solid ${tab === tb.key ? "transparent" : t.border}`,
-            background: tab === tb.key ? t.gradient : "transparent",
+            padding: "8px 16px", borderRadius: 6,
+            border: `1.5px solid ${tab === tb.key ? t.accent : t.border}`,
+            background: tab === tb.key ? t.accent : "transparent",
             color: tab === tb.key ? "#fff" : t.textMuted,
             fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5,
-            boxShadow: tab === tb.key ? "0 3px 12px rgba(26,122,122,0.25)" : "none",
           }}>{tb.label}</button>
         ))}
       </div>
@@ -739,7 +739,7 @@ export default function App() {
             <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, margin: "0 0 6px", color: t.text }}>Core Principles</h3>
             <div style={{ fontSize: 12.5, color: t.textMuted, marginBottom: 14, fontStyle: "italic" }}>Review before each session.</div>
             {CORE_PRINCIPLES.map((p, i) => (
-              <div key={i} style={{ padding: "12px 14px", marginBottom: 8, background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10 }}>
+              <div key={i} style={{ padding: "12px 14px", marginBottom: 8, background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10 }}>
                 <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 15, fontWeight: 700, color: t.accent, marginBottom: 2 }}>{p.title}</div>
                 <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.6 }}>{p.desc}</div>
                 <CiteList ids={p.cite} t={t} />
@@ -751,7 +751,7 @@ export default function App() {
           <div className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20 }}>
             <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, margin: "0 0 14px", color: t.text }}>Sample IEP Goal Language</h3>
             {IEP_GOALS.map((g, i) => (
-              <div key={i} style={{ padding: "12px 14px", marginBottom: 8, background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10 }}>
+              <div key={i} style={{ padding: "12px 14px", marginBottom: 8, background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10 }}>
                 <MonoLabel t={t} color={t.accent}>{g.area}</MonoLabel>
                 <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.65 }}>{g.goal}</div>
                 <CiteList ids={g.cite} t={t} />
@@ -761,17 +761,207 @@ export default function App() {
         </div>
       )}
 
-      {/* ===== SESSIONS TAB ===== */}
-      {tab === "sessions" && (
-        <div>
-          <div style={{ background: `${t.accent}10`, border: `1px solid ${t.accent}30`, borderRadius: 12, padding: "12px 14px", marginBottom: 16, fontSize: 13, color: t.textSub, lineHeight: 1.6 }}>
-            Tap each session to expand. Activities open with fillable notes, response pills, and declarative-language swaps. Use <strong>Print</strong> to capture everything to PDF.
+      {/* ===== SESSIONS TAB — SPLIT LAYOUT ===== */}
+      {tab === "sessions" && (() => {
+        const session = SESSIONS.find(s => s.id === activeSessionId) || SESSIONS[0];
+        const act = activeActivityIdx >= 0 ? session.activities[activeActivityIdx] : null;
+        const typeLabels = { opening: "Opening", core: "Core Activity", closing: "Closing" };
+        const hasNotes = (key) => String(responses[key] || "").trim().length > 0;
+        const actKey = (si, ai) => `s${si}-${session.activities[ai]?.name}`;
+
+        return (
+          <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: 16, minHeight: 600 }}>
+            {/* LEFT PANEL — Session & Activity Nav */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              {/* Session selector */}
+              <div style={{ marginBottom: 12 }}>
+                <MonoLabel t={t}>Session</MonoLabel>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  {SESSIONS.map(s => {
+                    const isActive = s.id === activeSessionId;
+                    const sessionHasData = s.activities.some((a, i) =>
+                      hasNotes(`s${s.id}-${a.name}-notes`) || hasNotes(`s${s.id}-${a.name}-select`)
+                    ) || hasNotes(`s${s.id}-pre`) || hasNotes(`s${s.id}-summary`);
+                    return (
+                      <button key={s.id} onClick={() => { setActiveSessionId(s.id); setActiveActivityIdx(-1); }}
+                        style={{
+                          display: "flex", alignItems: "center", gap: 8, padding: "8px 10px",
+                          borderRadius: 8, border: `1.5px solid ${isActive ? s.color : t.border}`,
+                          background: isActive ? `${s.color}12` : "transparent",
+                          color: isActive ? t.text : t.textMuted, fontSize: 13, fontWeight: isActive ? 700 : 500,
+                          fontFamily: "'DM Sans', system-ui, sans-serif", textAlign: "left", cursor: "pointer",
+                        }}>
+                        <span style={{ fontSize: 16 }}>{s.icon}</span>
+                        <span style={{ flex: 1 }}>{s.title}</span>
+                        {sessionHasData && <span style={{ width: 6, height: 6, borderRadius: 3, background: s.color, flexShrink: 0 }} />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Activity list for active session */}
+              <div style={{ borderTop: `1px solid ${t.border}`, paddingTop: 12 }}>
+                <MonoLabel t={t} color={session.color}>Activities</MonoLabel>
+                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                  {/* Overview / Pre-notes */}
+                  <button onClick={() => setActiveActivityIdx(-1)}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 8, padding: "7px 10px",
+                      borderRadius: 6, border: activeActivityIdx === -1 ? `1.5px solid ${session.color}` : `1px solid transparent`,
+                      background: activeActivityIdx === -1 ? `${session.color}12` : "transparent",
+                      color: activeActivityIdx === -1 ? t.text : t.textMuted, fontSize: 12, fontWeight: activeActivityIdx === -1 ? 700 : 500,
+                      fontFamily: "'DM Sans', system-ui, sans-serif", textAlign: "left", cursor: "pointer",
+                    }}>
+                    <span style={{ width: 18, height: 18, borderRadius: 4, background: `${session.color}20`, color: session.color, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>i</span>
+                    <span>Overview & Evidence</span>
+                  </button>
+
+                  {session.activities.map((a, i) => {
+                    const isAct = activeActivityIdx === i;
+                    const actHasData = hasNotes(`${actKey(session.id, i)}-notes`) || hasNotes(`${actKey(session.id, i)}-select`);
+                    return (
+                      <button key={i} onClick={() => setActiveActivityIdx(i)}
+                        style={{
+                          display: "flex", alignItems: "center", gap: 8, padding: "7px 10px",
+                          borderRadius: 6, border: isAct ? `1.5px solid ${session.color}` : `1px solid transparent`,
+                          background: isAct ? `${session.color}12` : "transparent",
+                          color: isAct ? t.text : t.textMuted, fontSize: 12, fontWeight: isAct ? 700 : 500,
+                          fontFamily: "'DM Sans', system-ui, sans-serif", textAlign: "left", cursor: "pointer", lineHeight: 1.3,
+                        }}>
+                        <span style={{ width: 18, height: 18, borderRadius: 4, background: actHasData ? `${session.color}25` : t.tagBg, color: actHasData ? session.color : t.textDim, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          {actHasData ? "✓" : i + 1}
+                        </span>
+                        <span style={{ flex: 1 }}>{a.name}</span>
+                        <span style={{ fontSize: 10, color: t.textDim }}>{a.time}</span>
+                      </button>
+                    );
+                  })}
+
+                  {/* Session wrap-up */}
+                  <button onClick={() => setActiveActivityIdx(session.activities.length)}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 8, padding: "7px 10px",
+                      borderRadius: 6, border: activeActivityIdx === session.activities.length ? `1.5px solid ${session.color}` : `1px solid transparent`,
+                      background: activeActivityIdx === session.activities.length ? `${session.color}12` : "transparent",
+                      color: activeActivityIdx === session.activities.length ? t.text : t.textMuted, fontSize: 12, fontWeight: activeActivityIdx === session.activities.length ? 700 : 500,
+                      fontFamily: "'DM Sans', system-ui, sans-serif", textAlign: "left", cursor: "pointer",
+                    }}>
+                    <span style={{ width: 18, height: 18, borderRadius: 4, background: `${session.color}20`, color: session.color, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>✎</span>
+                    <span>Session Wrap-Up</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT PANEL — Active Content */}
+            <div style={{ background: t.card, border: `1.5px solid ${t.border}`, borderRadius: 12, padding: "24px 28px", minHeight: 400 }}>
+              {/* Session header */}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16, paddingBottom: 14, borderBottom: `2px solid ${session.color}` }}>
+                <span style={{ fontSize: 26 }}>{session.icon}</span>
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: session.color, fontFamily: "'DM Sans', system-ui, sans-serif" }}>Session {session.id}</div>
+                  <h2 style={{ margin: 0, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2 }}>{session.title}</h2>
+                </div>
+              </div>
+
+              {/* Overview panel */}
+              {activeActivityIdx === -1 && (
+                <div>
+                  <p style={{ fontSize: 14, color: t.textMuted, fontStyle: "italic", marginBottom: 16 }}>{session.subtitle}</p>
+                  <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.55, marginBottom: 16 }}>
+                    <span style={{ color: session.color, fontWeight: 700 }}>Target: </span>{session.targetSkill}
+                  </div>
+                  <div style={{ background: `${session.color}08`, border: `1px solid ${session.color}25`, borderRadius: 10, padding: "14px 16px", marginBottom: 16 }}>
+                    <MonoLabel t={t} color={session.color}>Evidence base</MonoLabel>
+                    <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.6 }}>{session.evidence}</div>
+                    <CiteList ids={session.cite?.join(",")} t={t} />
+                    <div style={{ marginTop: 12 }}>
+                      <MonoLabel t={t} color={session.color}>Unstuck &amp; On Target alignment</MonoLabel>
+                      <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.6 }}>{session.unstuckLink}</div>
+                    </div>
+                  </div>
+                  <TextInput label="Pre-session notes / student mood / context" value={responses[`s${session.id}-pre`] || ""}
+                    onChange={(v) => setResponses((p) => ({ ...p, [`s${session.id}-pre`]: v }))} t={t} />
+                  <div style={{ marginTop: 16 }}>
+                    <button onClick={() => setActiveActivityIdx(0)}
+                      style={{ padding: "10px 20px", borderRadius: 6, border: "none", background: session.color, color: "#fff", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+                      Start Session →
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Activity panel */}
+              {act && (
+                <div>
+                  <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: session.color, background: `${session.color}15`, padding: "3px 10px", borderRadius: 4, fontFamily: "'DM Sans', system-ui, sans-serif" }}>{typeLabels[act.type]}</span>
+                    <span style={{ fontSize: 12, color: t.textDim, fontFamily: "'DM Sans', system-ui, sans-serif" }}>{act.time}</span>
+                  </div>
+                  <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, fontWeight: 700, color: t.text, margin: "0 0 10px" }}>{act.name}</h3>
+                  <p style={{ margin: "0 0 16px", fontSize: 14, color: t.textSub, lineHeight: 1.7 }}>{act.desc}</p>
+
+                  {act.swaps && <SwapBox swaps={act.swaps} t={t} color={session.color} />}
+
+                  {act.selectOptions && (
+                    <div style={{ marginTop: 16 }}>
+                      <SelectPills label={act.selectOptions.label} options={act.selectOptions.options}
+                        value={responses[`${actKey(session.id, activeActivityIdx)}-select`] || ""} onChange={(v) => setResponses((p) => ({ ...p, [`${actKey(session.id, activeActivityIdx)}-select`]: v }))} t={t} color={session.color} />
+                    </div>
+                  )}
+
+                  {act.prompt && (
+                    <div style={{ marginTop: 12 }}>
+                      <TextInput label={act.prompt} value={responses[`${actKey(session.id, activeActivityIdx)}-notes`] || ""}
+                        onChange={(v) => setResponses((p) => ({ ...p, [`${actKey(session.id, activeActivityIdx)}-notes`]: v }))} rows={3} t={t} />
+                    </div>
+                  )}
+
+                  {/* Navigation */}
+                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20, paddingTop: 16, borderTop: `1px solid ${t.border}` }}>
+                    <button onClick={() => setActiveActivityIdx(activeActivityIdx - 1)}
+                      style={{ padding: "8px 16px", borderRadius: 6, border: `1.5px solid ${t.border}`, background: "transparent", color: t.textMuted, fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", cursor: "pointer" }}>
+                      ← {activeActivityIdx === 0 ? "Overview" : session.activities[activeActivityIdx - 1]?.name}
+                    </button>
+                    <button onClick={() => setActiveActivityIdx(activeActivityIdx + 1)}
+                      style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: session.color, color: "#fff", fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", cursor: "pointer" }}>
+                      {activeActivityIdx < session.activities.length - 1 ? session.activities[activeActivityIdx + 1]?.name : "Wrap-Up"} →
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Wrap-up panel */}
+              {activeActivityIdx === session.activities.length && (
+                <div>
+                  <h3 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 20, fontWeight: 700, color: t.text, margin: "0 0 16px" }}>Session Wrap-Up</h3>
+                  <TextInput label="Session summary / key observations" value={responses[`s${session.id}-summary`] || ""}
+                    onChange={(v) => setResponses((p) => ({ ...p, [`s${session.id}-summary`]: v }))} rows={4} t={t} />
+                  <SelectPills label="Overall session engagement"
+                    options={["Highly engaged throughout", "Engaged with warm-up needed", "Partial engagement", "Resistant — adjusted approach", "Session modified significantly"]}
+                    value={responses[`s${session.id}-engagement`] || ""} onChange={(v) => setResponses((p) => ({ ...p, [`s${session.id}-engagement`]: v }))} t={t} color={session.color} />
+                  <TextInput label="Plan for next session / adjustments needed" value={responses[`s${session.id}-next`] || ""}
+                    onChange={(v) => setResponses((p) => ({ ...p, [`s${session.id}-next`]: v }))} rows={3} t={t} />
+
+                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20, paddingTop: 16, borderTop: `1px solid ${t.border}` }}>
+                    <button onClick={() => setActiveActivityIdx(session.activities.length - 1)}
+                      style={{ padding: "8px 16px", borderRadius: 6, border: `1.5px solid ${t.border}`, background: "transparent", color: t.textMuted, fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", cursor: "pointer" }}>
+                      ← {session.activities[session.activities.length - 1]?.name}
+                    </button>
+                    {session.id < 6 && (
+                      <button onClick={() => { setActiveSessionId(session.id + 1); setActiveActivityIdx(-1); }}
+                        style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: t.accent, color: "#fff", fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", cursor: "pointer" }}>
+                        Next Session →
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-          {SESSIONS.map((s) => (
-            <SessionSection key={s.id} session={s} responses={responses} setResponses={setResponses} t={t} />
-          ))}
-        </div>
-      )}
+        );
+      })()}
 
       {/* ===== ACTIVITY BANK ===== */}
       {tab === "bank" && (
@@ -808,8 +998,8 @@ export default function App() {
           {DECLARATIVE_REF.map((item, i) => (
             <div key={i} className="section-card" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", marginBottom: 8 }}>
               <MonoLabel t={t}>{item.cat}</MonoLabel>
-              <div style={{ fontSize: 13, color: "#c47086", textDecoration: "line-through", opacity: 0.7, marginBottom: 4 }}>✕ {item.old}</div>
-              <div style={{ fontSize: 14, color: "#4f9c74", fontWeight: 500, lineHeight: 1.6 }}>✓ {item.new}</div>
+              <div style={{ fontSize: 13, color: "#d73027", textDecoration: "line-through", opacity: 0.7, marginBottom: 4 }}>✕ {item.old}</div>
+              <div style={{ fontSize: 14, color: "#2d7a2d", fontWeight: 500, lineHeight: 1.6 }}>✓ {item.new}</div>
             </div>
           ))}
 
@@ -844,26 +1034,26 @@ export default function App() {
 
             <TextInput label="Student (initials or code)" value={responses["staff-name"] || profile.name} onChange={(v) => setResponses((p) => ({ ...p, "staff-name": v }))} rows={1} t={t} />
 
-            <div style={{ background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10, padding: 14, marginBottom: 12 }}>
+            <div style={{ background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 10, padding: 14, marginBottom: 12 }}>
               <MonoLabel t={t} color={t.accent}>What you need to know</MonoLabel>
               <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.7 }}>
                 This student presents features of a <strong>Pathological Demand Avoidance / Pervasive Drive for Autonomy profile</strong> — a nervous system that perceives everyday demands (even kind ones) as threats. This is <em>not</em> willful defiance. The brain's threat-detection system is overactive, and demands (questions, instructions, transitions, even praise) can trigger a fight / flight / freeze response. Support looks like collaboration, declarative language, and preserving the student's sense of agency.
               </div>
             </div>
 
-            <div style={{ background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid #27ae60`, borderRadius: 10, padding: 14, marginBottom: 12 }}>
-              <MonoLabel t={t} color="#27ae60">This student's strengths</MonoLabel>
+            <div style={{ background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid #7cca7c`, borderRadius: 10, padding: 14, marginBottom: 12 }}>
+              <MonoLabel t={t} color="#7cca7c">This student's strengths</MonoLabel>
               <TextInput label="" value={responses["staff-strengths"] || profile.strengths} onChange={(v) => setResponses((p) => ({ ...p, "staff-strengths": v }))} rows={2} t={t} />
             </div>
 
-            <div style={{ background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid #e89b2d`, borderRadius: 10, padding: 14, marginBottom: 14 }}>
-              <MonoLabel t={t} color="#e89b2d">Known triggers</MonoLabel>
+            <div style={{ background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid #fdae61`, borderRadius: 10, padding: 14, marginBottom: 14 }}>
+              <MonoLabel t={t} color="#fdae61">Known triggers</MonoLabel>
               <TextInput label="" value={responses["staff-triggers"] || profile.triggers} onChange={(v) => setResponses((p) => ({ ...p, "staff-triggers": v }))} rows={2} t={t} />
             </div>
 
             <h4 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 17, margin: "0 0 10px", color: t.text }}>The 5 shifts that help most</h4>
             {STAFF_SHIFTS.map((s, i) => (
-              <div key={i} style={{ padding: "10px 12px", marginBottom: 6, background: t.inputBg, border: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 8 }}>
+              <div key={i} style={{ padding: "10px 12px", marginBottom: 6, background: t.inputBg, borderTop: `1px solid ${t.border}`, borderRight: `1px solid ${t.border}`, borderBottom: `1px solid ${t.border}`, borderLeft: `3px solid ${t.accent}`, borderRadius: 8 }}>
                 <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, fontWeight: 700, color: t.accent }}>{s.shift}</div>
                 <div style={{ fontSize: 13, color: t.textSub, lineHeight: 1.55 }}>{s.ex}</div>
               </div>
@@ -905,11 +1095,11 @@ export default function App() {
       {/* Footer */}
       <footer style={{ textAlign: "center", marginTop: 48, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, lineHeight: 1.8 }}>
         <button onClick={() => setShowAbout(true)} className="no-print" aria-label="About this resource"
-          style={{ background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 16px", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
-          📖 About this resource
+          style={{ background: "transparent", border: `1.5px solid ${t.border}`, borderRadius: 6, padding: "6px 16px", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
+          About this resource
         </button>
         <p>Rachel Terra Norton, MS, CCC-SLP</p>
-        <p>RTN Communication &amp; Literacy &middot; rachelslp.org</p>
+        <p>RTN | Speech, Language &amp; Literacy &middot; rachelslp.org</p>
       </footer>
 
       {showAbout && <AboutModal onClose={() => setShowAbout(false)} t={t} />}
