@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTN App Palette System — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', system-ui, sans-serif; background: #f4f4f6; color: #1a1a2a; padding: 40px 24px 80px; }
+h1 { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 6px; }
+.subtitle { text-align: center; font-size: 14px; color: #6b6b80; margin-bottom: 40px; }
+.palette-section { max-width: 1100px; margin: 0 auto 48px; }
+.palette-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.palette-bar { height: 6px; flex: 1; border-radius: 3px; }
+.palette-name { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
+.palette-category { font-size: 12px; color: #6b6b80; font-weight: 500; white-space: nowrap; }
+.app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.app-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e0e0e6; transition: box-shadow 0.2s; }
+.app-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.app-bar { height: 6px; width: 100%; }
+.app-body { padding: 16px 18px 18px; }
+.app-icon { font-size: 20px; margin-bottom: 6px; }
+.app-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
+.app-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; line-height: 1.2; }
+.app-desc { font-size: 12px; color: #6b6b80; line-height: 1.5; }
+.app-type { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+.swatch-row { display: flex; gap: 0; height: 24px; border-radius: 6px; overflow: hidden; margin-top: 10px; }
+.swatch { flex: 1; }
+.legend { max-width: 1100px; margin: 0 auto 32px; padding: 20px 24px; background: #fff; border-radius: 12px; border: 1px solid #e0e0e6; }
+.legend h2 { font-size: 16px; margin-bottom: 10px; }
+.legend-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.legend-dot { width: 28px; height: 6px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<h1>RTN App Palette System</h1>
+<p class="subtitle">Color-coded gradient bars by app category &middot; R diverging palettes (colorblind-friendly)</p>
+
+<div class="legend">
+  <h2>Palette Key</h2>
+  <div class="legend-grid">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:linear-gradient(90deg,#440154,#482777,#3f4a8a,#31678e,#26838f,#1f9d8a,#6cce5a,#b6de2b,#fee825)"></div>
+      <span><strong>Viridis</strong> — Literacy</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:linear-gradient(90deg,#9e0142,#d53e4f,#f46d43,#fdae61,#fee08b,#abdda4,#66c2a5,#3288bd,#5e4fa2)"></div>
+      <span><strong>Spectral</strong> — Social</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <span><strong>Plasma</strong> — Assessment</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:linear-gradient(90deg,#002051,#0a326a,#2b446e,#4d566d,#6b6b6f,#8a8678,#a9a373,#cac26d,#fdea45)"></div>
+      <span><strong>Cividis</strong> — Other</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ VIRIDIS — LITERACY ═══════════ -->
+<div class="palette-section">
+  <div class="palette-header">
+    <span class="palette-name" style="color:#31678e">Viridis</span>
+    <div class="palette-bar" style="background:linear-gradient(90deg,#440154,#482777,#3f4a8a,#31678e,#26838f,#1f9d8a,#6cce5a,#b6de2b,#fee825)"></div>
+    <span class="palette-category">Literacy</span>
+  </div>
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#440154,#482777,#3f4a8a,#31678e,#26838f,#1f9d8a,#6cce5a,#b6de2b,#fee825)"></div>
+      <div class="app-body">
+        <div class="app-icon">📊</div>
+        <div class="app-label" style="color:#31678e">Literacy Tracking</div>
+        <div class="app-title">Digital Literacy Tracker</div>
+        <div class="app-desc">Progress monitoring for structured literacy intervention. Tracks skills across sound, word, and text levels.</div>
+        <span class="app-type" style="background:#31678e15;color:#31678e">literacy-tracker.html</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#440154,#482777,#3f4a8a,#31678e,#26838f,#1f9d8a,#6cce5a,#b6de2b,#fee825)"></div>
+      <div class="app-body">
+        <div class="app-icon">📖</div>
+        <div class="app-label" style="color:#31678e">Simulation</div>
+        <div class="app-title">Dyslexia Simulation</div>
+        <div class="app-desc">Interactive simulation to build empathy for struggling readers. Three types of text distortion with reflection.</div>
+        <span class="app-type" style="background:#31678e15;color:#31678e">dyslexia-simulation-main</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#440154,#482777,#3f4a8a,#31678e,#26838f,#1f9d8a,#6cce5a,#b6de2b,#fee825)"></div>
+      <div class="app-body">
+        <div class="app-icon">📖</div>
+        <div class="app-label" style="color:#31678e">Session Planning</div>
+        <div class="app-title">Session Builder</div>
+        <div class="app-desc">Structured literacy session planner with built-in data collection. Plan across sound, word, and text levels.</div>
+        <span class="app-type" style="background:#31678e15;color:#31678e">session-builder-main</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#440154,#482777,#3f4a8a,#31678e,#26838f,#1f9d8a,#6cce5a,#b6de2b,#fee825)"></div>
+      <div class="app-body">
+        <div class="app-icon">🔤</div>
+        <div class="app-label" style="color:#31678e">Practice</div>
+        <div class="app-title">Sight Word Flashcards</div>
+        <div class="app-desc">First 100 sight words with Montessori grammar color coding. Based on Green et al., 2024.</div>
+        <span class="app-type" style="background:#31678e15;color:#31678e">sight-word-flashcards-main</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ SPECTRAL — SOCIAL ═══════════ -->
+<div class="palette-section">
+  <div class="palette-header">
+    <span class="palette-name" style="color:#5e4fa2">Spectral</span>
+    <div class="palette-bar" style="background:linear-gradient(90deg,#9e0142,#d53e4f,#f46d43,#fdae61,#fee08b,#abdda4,#66c2a5,#3288bd,#5e4fa2)"></div>
+    <span class="palette-category">Social</span>
+  </div>
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#9e0142,#d53e4f,#f46d43,#fdae61,#fee08b,#abdda4,#66c2a5,#3288bd,#5e4fa2)"></div>
+      <div class="app-body">
+        <div class="app-icon">🧩</div>
+        <div class="app-label" style="color:#5e4fa2">PDA Intervention</div>
+        <div class="app-title">The Autonomy-First Toolkit</div>
+        <div class="app-desc">PDA-profile intervention planner. Declarative language, CPS Plan B, Unstuck & On Target, interoception.</div>
+        <span class="app-type" style="background:#5e4fa215;color:#5e4fa2">pda-toolkit-main ✓ done</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#9e0142,#d53e4f,#f46d43,#fdae61,#fee08b,#abdda4,#66c2a5,#3288bd,#5e4fa2)"></div>
+      <div class="app-body">
+        <div class="app-icon">📋</div>
+        <div class="app-label" style="color:#5e4fa2">Social-Communication</div>
+        <div class="app-title">SCDFI</div>
+        <div class="app-desc">Social-Communication & Developmental Functioning Inventory. Multi-informant assessment tool.</div>
+        <span class="app-type" style="background:#5e4fa215;color:#5e4fa2">SCDFI-main 3</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ PLASMA — ASSESSMENT ═══════════ -->
+<div class="palette-section">
+  <div class="palette-header">
+    <span class="palette-name" style="color:#7201a8">Plasma</span>
+    <div class="palette-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+    <span class="palette-category">Assessment / Intake / Eval</span>
+  </div>
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <div class="app-body">
+        <div class="app-icon">📋</div>
+        <div class="app-label" style="color:#7201a8">Student Intake</div>
+        <div class="app-title">RTN Student Self-Report Intake</div>
+        <div class="app-desc">Neurodiversity-affirming, strengths-based student self-report intake form for SLPs and reading specialists.</div>
+        <span class="app-type" style="background:#7201a815;color:#7201a8">rtn-digital-intake-main</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <div class="app-body">
+        <div class="app-icon">📝</div>
+        <div class="app-label" style="color:#7201a8">Intake Forms</div>
+        <div class="app-title">Evaluation Intake Forms</div>
+        <div class="app-desc">Trauma-informed parent/caregiver and teacher/educator intake forms for SLP evaluation.</div>
+        <span class="app-type" style="background:#7201a815;color:#7201a8">evaluation-intake</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <div class="app-body">
+        <div class="app-icon">🧪</div>
+        <div class="app-label" style="color:#7201a8">Evaluation</div>
+        <div class="app-title">SLP Evaluation Wizard</div>
+        <div class="app-desc">Full SLP evaluation report builder. Structured sections for assessment, analysis, and recommendations.</div>
+        <span class="app-type" style="background:#7201a815;color:#7201a8">RTN_SLP_Eval_Wizard_v4_1.html</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <div class="app-body">
+        <div class="app-icon">📈</div>
+        <div class="app-label" style="color:#7201a8">Benchmark</div>
+        <div class="app-title">CUBED-3 Benchmark Score Report</div>
+        <div class="app-desc">Dynamic Decoding Measures benchmark scoring and progress visualization.</div>
+        <span class="app-type" style="background:#7201a815;color:#7201a8">CUBED3-DDM-Benchmark.html</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <div class="app-body">
+        <div class="app-icon">🔠</div>
+        <div class="app-label" style="color:#7201a8">Assessment</div>
+        <div class="app-title">CORE Phonics Survey</div>
+        <div class="app-desc">Score report for the CORE Phonics Survey — alphabetic knowledge, reading, and spelling subtests.</div>
+        <span class="app-type" style="background:#7201a815;color:#7201a8">Core-Phonics-Survey.html</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#0d0887,#46039f,#7201a8,#9c179e,#bd3786,#d8576b,#ed7953,#fb9f3a,#fdca26)"></div>
+      <div class="app-body">
+        <div class="app-icon">🎯</div>
+        <div class="app-label" style="color:#7201a8">Assessment</div>
+        <div class="app-title">PAST Score Report</div>
+        <div class="app-desc">Phonological Awareness Screening Test — scoring, analysis, and phonological awareness profiling.</div>
+        <span class="app-type" style="background:#7201a815;color:#7201a8">PAST-Score-Report.html</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ CIVIDIS — OTHER ═══════════ -->
+<div class="palette-section">
+  <div class="palette-header">
+    <span class="palette-name" style="color:#4d566d">Cividis</span>
+    <div class="palette-bar" style="background:linear-gradient(90deg,#002051,#0a326a,#2b446e,#4d566d,#6b6b6f,#8a8678,#a9a373,#cac26d,#fdea45)"></div>
+    <span class="palette-category">Other</span>
+  </div>
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#002051,#0a326a,#2b446e,#4d566d,#6b6b6f,#8a8678,#a9a373,#cac26d,#fdea45)"></div>
+      <div class="app-body">
+        <div class="app-icon">🧠</div>
+        <div class="app-label" style="color:#4d566d">Education</div>
+        <div class="app-title">Brain Pathways</div>
+        <div class="app-desc">Interactive brain diagram showing overlapping neural networks of reading, learning, and trauma.</div>
+        <span class="app-type" style="background:#4d566d15;color:#4d566d">brain-pathways-main</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#002051,#0a326a,#2b446e,#4d566d,#6b6b6f,#8a8678,#a9a373,#cac26d,#fdea45)"></div>
+      <div class="app-body">
+        <div class="app-icon">🌱</div>
+        <div class="app-label" style="color:#4d566d">Trauma-Informed</div>
+        <div class="app-title">Trauma-Informed Activity Planner</div>
+        <div class="app-desc">Adapt activities through a trauma-informed lens using SAMHSA principles, DIR/Floortime, and sensory processing.</div>
+        <span class="app-type" style="background:#4d566d15;color:#4d566d">trauma-informed-planner</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-bar" style="background:linear-gradient(90deg,#002051,#0a326a,#2b446e,#4d566d,#6b6b6f,#8a8678,#a9a373,#cac26d,#fdea45)"></div>
+      <div class="app-body">
+        <div class="app-icon">🌍</div>
+        <div class="app-label" style="color:#4d566d">Systems Mapping</div>
+        <div class="app-title">Ecological Systems & Trauma Explorer</div>
+        <div class="app-desc">Map trauma across Bronfenbrenner's ecological systems and identify effects on learning.</div>
+        <span class="app-type" style="background:#4d566d15;color:#4d566d">eco-explorer-upload</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Swatches -->
+<div style="max-width:1100px;margin:32px auto 0;">
+  <h2 style="font-size:16px;margin-bottom:12px;">Full Palette Swatches</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#31678e;margin-bottom:4px;">Viridis</div>
+      <div class="swatch-row">
+        <div class="swatch" style="background:#440154"></div>
+        <div class="swatch" style="background:#482777"></div>
+        <div class="swatch" style="background:#3f4a8a"></div>
+        <div class="swatch" style="background:#31678e"></div>
+        <div class="swatch" style="background:#26838f"></div>
+        <div class="swatch" style="background:#1f9d8a"></div>
+        <div class="swatch" style="background:#6cce5a"></div>
+        <div class="swatch" style="background:#b6de2b"></div>
+        <div class="swatch" style="background:#fee825"></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5e4fa2;margin-bottom:4px;">Spectral</div>
+      <div class="swatch-row">
+        <div class="swatch" style="background:#9e0142"></div>
+        <div class="swatch" style="background:#d53e4f"></div>
+        <div class="swatch" style="background:#f46d43"></div>
+        <div class="swatch" style="background:#fdae61"></div>
+        <div class="swatch" style="background:#fee08b"></div>
+        <div class="swatch" style="background:#abdda4"></div>
+        <div class="swatch" style="background:#66c2a5"></div>
+        <div class="swatch" style="background:#3288bd"></div>
+        <div class="swatch" style="background:#5e4fa2"></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7201a8;margin-bottom:4px;">Plasma</div>
+      <div class="swatch-row">
+        <div class="swatch" style="background:#0d0887"></div>
+        <div class="swatch" style="background:#46039f"></div>
+        <div class="swatch" style="background:#7201a8"></div>
+        <div class="swatch" style="background:#9c179e"></div>
+        <div class="swatch" style="background:#bd3786"></div>
+        <div class="swatch" style="background:#d8576b"></div>
+        <div class="swatch" style="background:#ed7953"></div>
+        <div class="swatch" style="background:#fb9f3a"></div>
+        <div class="swatch" style="background:#fdca26"></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#4d566d;margin-bottom:4px;">Cividis</div>
+      <div class="swatch-row">
+        <div class="swatch" style="background:#002051"></div>
+        <div class="swatch" style="background:#0a326a"></div>
+        <div class="swatch" style="background:#2b446e"></div>
+        <div class="swatch" style="background:#4d566d"></div>
+        <div class="swatch" style="background:#6b6b6f"></div>
+        <div class="swatch" style="background:#8a8678"></div>
+        <div class="swatch" style="background:#a9a373"></div>
+        <div class="swatch" style="background:#cac26d"></div>
+        <div class="swatch" style="background:#fdea45"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:40px;font-size:12px;color:#9aa0a8;">
+  RTN | Speech, Language & Literacy &middot; Rachel Terra Norton, MS, CCC-SLP &middot; All palettes are R diverging (colorblind-friendly)
+</div>
+
+</body>
+</html>

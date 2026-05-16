@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Tools | RTN | Speech, Language & Literacy</title>
+<meta name="description" content="Free, evidence-based clinical tools for SLPs, educators, and clinicians. Literacy, social-communication, assessment, and more. By Rachel Terra Norton, MS, CCC-SLP.">
+<meta name="author" content="Rachel Terra Norton, MS, CCC-SLP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<script>
+  (function(){
+    try {
+      var saved = localStorage.getItem('rtn-theme');
+      document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+    } catch(e){ document.documentElement.setAttribute('data-theme', 'light'); }
+  })();
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f7fa; --card: #ffffff; --text: #1a1a2a; --text2: #3a3050;
+  --text3: #6b6280; --border: #e4e0ec; --radius: 12px;
+  --viridis: linear-gradient(90deg, #440154, #482777, #3f4a8a, #31678e, #26838f, #1f9d8a, #6cce5a, #b6de2b, #fee825);
+  --spectral: linear-gradient(90deg, #9e0142, #d53e4f, #f46d43, #fdae61, #fee08b, #abdda4, #66c2a5, #3288bd, #5e4fa2);
+  --plasma: linear-gradient(90deg, #0d0887, #46039f, #7201a8, #9c179e, #bd3786, #d8576b, #ed7953, #fb9f3a, #fdca26);
+  --cividis: linear-gradient(90deg, #002051, #0a326a, #2b446e, #4d566d, #6b6b6f, #8a8678, #a9a373, #cac26d, #fdea45);
+  --viridis-accent: #26838f; --spectral-accent: #5e4fa2;
+  --plasma-accent: #7201a8; --cividis-accent: #4d566d;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0c18; --card: #1a1630; --text: #e8e4f4; --text2: #c0b4d6;
+  --text3: #8878a0; --border: #2e2850;
+}
+
+html { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+body { min-height: 100vh; }
+
+/* ── Top bar ── */
+.top-bar {
+  height: 6px; width: 100%; position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: linear-gradient(90deg,
+    #440154, #482777, #3f4a8a, #31678e, #26838f, #1f9d8a, #6cce5a, #b6de2b, #fee825 25%,
+    #9e0142, #d53e4f, #f46d43, #fdae61, #fee08b, #abdda4, #66c2a5, #3288bd, #5e4fa2 50%,
+    #0d0887, #46039f, #7201a8, #9c179e, #bd3786, #d8576b, #ed7953, #fb9f3a, #fdca26 75%,
+    #002051, #0a326a, #2b446e, #4d566d, #6b6b6f, #8a8678, #a9a373, #cac26d, #fdea45 100%
+  );
+}
+
+/* ── Header ── */
+.header {
+  max-width: 900px; margin: 0 auto; padding: 48px 24px 0; text-align: center;
+}
+.header-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 8px;
+}
+.header h1 {
+  font-size: 32px; font-weight: 800; line-height: 1.15; margin-bottom: 10px;
+  background: linear-gradient(135deg, #31678e, #5e4fa2, #7201a8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme="dark"] .header h1 {
+  background: linear-gradient(135deg, #6cce5a, #66c2a5, #fb9f3a);
+  -webkit-background-clip: text; background-clip: text;
+}
+.header p { font-size: 15px; color: var(--text2); line-height: 1.6; max-width: 600px; margin: 0 auto 8px; }
+.header-byline { font-size: 13px; color: var(--text3); margin-bottom: 32px; }
+.header-byline a { color: var(--spectral-accent); text-decoration: none; }
+[data-theme="dark"] .header-byline a { color: #66c2a5; }
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  position: fixed; top: 16px; right: 16px; z-index: 10000;
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 6px 14px; cursor: pointer; font-family: inherit; font-size: 12px;
+  font-weight: 600; color: var(--text3);
+}
+.theme-toggle:hover { border-color: var(--spectral-accent); }
+
+/* ── Section ── */
+.section {
+  max-width: 900px; margin: 0 auto 40px; padding: 0 24px;
+}
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.section-bar { height: 5px; flex: 1; border-radius: 3px; }
+.section-name {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
+}
+.section-cat {
+  font-size: 11px; color: var(--text3); font-weight: 500; white-space: nowrap;
+}
+
+/* ── Card grid ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+
+.tool-card {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+}
+.tool-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px);
+  border-color: var(--hover-accent, var(--border));
+}
+.tool-card .card-bar { height: 5px; width: 100%; }
+.tool-card .card-body { padding: 16px 18px 18px; }
+.tool-card .card-icon { font-size: 22px; margin-bottom: 6px; }
+.tool-card .card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.tool-card .card-title {
+  font-size: 17px; font-weight: 700; line-height: 1.25; margin-bottom: 6px;
+}
+.tool-card .card-desc {
+  font-size: 12.5px; color: var(--text2); line-height: 1.55;
+}
+.tool-card .card-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 5px; margin-top: 10px;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center; padding: 40px 24px 48px; font-size: 12px; color: var(--text3); line-height: 1.7;
+}
+.footer a { color: var(--spectral-accent); text-decoration: none; }
+[data-theme="dark"] .footer a { color: #66c2a5; }
+.footer-note { font-size: 11px; margin-top: 6px; opacity: 0.7; }
+
+/* ── Print ── */
+@media print {
+  .top-bar, .theme-toggle { display: none !important; }
+  body { background: #fff !important; }
+  .tool-card { break-inside: avoid; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .header h1 { font-size: 26px; }
+  .grid { grid-template-columns: 1fr; }
+  .section-header { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<button class="theme-toggle" onclick="(function(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',d);localStorage.setItem('rtn-theme',d);this.textContent=d==='dark'?'Light':'Dark'}).call(this)" aria-label="Toggle theme">Dark</button>
+
+<div class="header">
+  <div class="header-label">RTN | Speech, Language & Literacy</div>
+  <h1>Clinical Tools</h1>
+  <p>Free, evidence-based digital tools for SLPs, educators, and clinicians. No accounts, no tracking — everything runs in your browser.</p>
+  <div class="header-byline">By <a href="https://www.rachelslp.org" target="_top">Rachel Terra Norton, MS, CCC-SLP</a></div>
+</div>
+
+<!-- ═══════════ VIRIDIS — LITERACY ═══════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-name" style="color:var(--viridis-accent)">Viridis</span>
+    <div class="section-bar" style="background:var(--viridis)"></div>
+    <span class="section-cat">Literacy</span>
+  </div>
+  <div class="grid">
+
+    <a class="tool-card" href="https://www.rachelslp.org/session-builder" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">📚</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Session Planning</div>
+        <div class="card-title">Literacy Session Builder</div>
+        <div class="card-desc">Build structured-literacy session plans with live data collection across sound, word, and text levels.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">📖 Structured Literacy</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/dyslexia-simulation" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">📖</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Simulation</div>
+        <div class="card-title">Dyslexia Simulation</div>
+        <div class="card-desc">Experience what reading feels like for students with dyslexia. Three interactive distortion modes with guided reflection.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">🧠 Empathy Builder</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/first-100-words" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🔤</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Practice</div>
+        <div class="card-title">Sight Word Flashcards</div>
+        <div class="card-desc">First 100 sight words with Montessori grammar color coding. Based on Green et al., 2024.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">🎨 Montessori</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/mystery-letters-game" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🔍</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Game</div>
+        <div class="card-title">Mystery Letter Game</div>
+        <div class="card-desc">Interactive letter identification and phonics game for early readers.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">🎮 Early Literacy</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/word-collector" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">📝</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Vocabulary</div>
+        <div class="card-title">Word Collector</div>
+        <div class="card-desc">Collect, categorize, and explore vocabulary words across contexts.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">📚 Language</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/word-scientist" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🔬</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Morphology</div>
+        <div class="card-title">Word Scientist</div>
+        <div class="card-desc">Break words into morphemes — prefixes, roots, and suffixes. Build morphological awareness.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">🧩 Word Study</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/pattern-detective" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🕵️</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Phonics</div>
+        <div class="card-title">Pattern Detective</div>
+        <div class="card-desc">Identify and practice spelling patterns across word families and syllable types.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">🔡 Decoding</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/fluency-lab" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">⏱️</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Fluency</div>
+        <div class="card-title">Fluency Lab</div>
+        <div class="card-desc">Oral reading fluency practice and progress monitoring with built-in timing.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">📈 Progress</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/phonics-friend" target="_top" style="--hover-accent:#26838f">
+      <div class="card-bar" style="background:var(--viridis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🗣️</div>
+        <div class="card-label" style="color:var(--viridis-accent)">Phonics</div>
+        <div class="card-title">Phonics Friend</div>
+        <div class="card-desc">Interactive phonics instruction and practice for emerging readers.</div>
+        <span class="card-tag" style="background:rgba(38,131,143,0.1);color:var(--viridis-accent)">🔊 Sound-Symbol</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══════════ SPECTRAL — SOCIAL ═══════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-name" style="color:var(--spectral-accent)">Spectral</span>
+    <div class="section-bar" style="background:var(--spectral)"></div>
+    <span class="section-cat">Social</span>
+  </div>
+  <div class="grid">
+
+    <a class="tool-card" href="#" target="_top" style="--hover-accent:#5e4fa2">
+      <div class="card-bar" style="background:var(--spectral)"></div>
+      <div class="card-body">
+        <div class="card-icon">🧩</div>
+        <div class="card-label" style="color:var(--spectral-accent)">PDA Intervention</div>
+        <div class="card-title">The Autonomy-First Toolkit</div>
+        <div class="card-desc">PDA-profile intervention planner with declarative language swaps, CPS Plan B, Unstuck & On Target, and interoception activities.</div>
+        <span class="card-tag" style="background:rgba(94,79,162,0.1);color:var(--spectral-accent)">🤝 Neurodiversity-Affirming</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/scdfi" target="_top" style="--hover-accent:#5e4fa2">
+      <div class="card-bar" style="background:var(--spectral)"></div>
+      <div class="card-body">
+        <div class="card-icon">📋</div>
+        <div class="card-label" style="color:var(--spectral-accent)">Social-Communication</div>
+        <div class="card-title">SCDFI</div>
+        <div class="card-desc">Social-Communication & Developmental Functioning Inventory. Multi-informant assessment across social, pragmatic, and adaptive domains.</div>
+        <span class="card-tag" style="background:rgba(94,79,162,0.1);color:var(--spectral-accent)">📊 Multi-Informant</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══════════ PLASMA — ASSESSMENT ═══════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-name" style="color:var(--plasma-accent)">Plasma</span>
+    <div class="section-bar" style="background:var(--plasma)"></div>
+    <span class="section-cat">Assessment / Intake / Eval</span>
+  </div>
+  <div class="grid">
+
+    <a class="tool-card" href="https://www.rachelslp.org/neuroaffirming-slp-intake" target="_top" style="--hover-accent:#7201a8">
+      <div class="card-bar" style="background:var(--plasma)"></div>
+      <div class="card-body">
+        <div class="card-icon">📋</div>
+        <div class="card-label" style="color:var(--plasma-accent)">Student Intake</div>
+        <div class="card-title">Student Self-Report Intake</div>
+        <div class="card-desc">Neurodiversity-affirming, strengths-based student self-report intake form for SLPs and reading specialists.</div>
+        <span class="card-tag" style="background:rgba(114,1,168,0.1);color:var(--plasma-accent)">💜 Strengths-Based</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="#" target="_top" style="--hover-accent:#7201a8">
+      <div class="card-bar" style="background:var(--plasma)"></div>
+      <div class="card-body">
+        <div class="card-icon">📝</div>
+        <div class="card-label" style="color:var(--plasma-accent)">Intake Forms</div>
+        <div class="card-title">Evaluation Intake Forms</div>
+        <div class="card-desc">Trauma-informed parent/caregiver and teacher/educator intake forms for speech-language evaluation.</div>
+        <span class="card-tag" style="background:rgba(114,1,168,0.1);color:var(--plasma-accent)">🏥 Clinical</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="#" target="_top" style="--hover-accent:#7201a8">
+      <div class="card-bar" style="background:var(--plasma)"></div>
+      <div class="card-body">
+        <div class="card-icon">🧪</div>
+        <div class="card-label" style="color:var(--plasma-accent)">Evaluation</div>
+        <div class="card-title">SLP Evaluation Wizard</div>
+        <div class="card-desc">Full SLP evaluation report builder with structured sections for assessment, analysis, and recommendations.</div>
+        <span class="card-tag" style="background:rgba(114,1,168,0.1);color:var(--plasma-accent)">📄 Report Builder</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="#" target="_top" style="--hover-accent:#7201a8">
+      <div class="card-bar" style="background:var(--plasma)"></div>
+      <div class="card-body">
+        <div class="card-icon">📈</div>
+        <div class="card-label" style="color:var(--plasma-accent)">Benchmark</div>
+        <div class="card-title">CUBED-3 Benchmark Report</div>
+        <div class="card-desc">Dynamic Decoding Measures benchmark scoring, progress visualization, and narrative-language analysis.</div>
+        <span class="card-tag" style="background:rgba(114,1,168,0.1);color:var(--plasma-accent)">📊 Score Report</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="#" target="_top" style="--hover-accent:#7201a8">
+      <div class="card-bar" style="background:var(--plasma)"></div>
+      <div class="card-body">
+        <div class="card-icon">🔠</div>
+        <div class="card-label" style="color:var(--plasma-accent)">Assessment</div>
+        <div class="card-title">CORE Phonics Survey</div>
+        <div class="card-desc">Score report for alphabetic knowledge, reading, and spelling subtests with visual skill mapping.</div>
+        <span class="card-tag" style="background:rgba(114,1,168,0.1);color:var(--plasma-accent)">📊 Score Report</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="#" target="_top" style="--hover-accent:#7201a8">
+      <div class="card-bar" style="background:var(--plasma)"></div>
+      <div class="card-body">
+        <div class="card-icon">🎯</div>
+        <div class="card-label" style="color:var(--plasma-accent)">Assessment</div>
+        <div class="card-title">PAST Score Report</div>
+        <div class="card-desc">Phonological Awareness Screening Test — scoring, analysis, and phonological awareness profiling.</div>
+        <span class="card-tag" style="background:rgba(114,1,168,0.1);color:var(--plasma-accent)">📊 Score Report</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══════════ CIVIDIS — OTHER ═══════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-name" style="color:var(--cividis-accent)">Cividis</span>
+    <div class="section-bar" style="background:var(--cividis)"></div>
+    <span class="section-cat">Other</span>
+  </div>
+  <div class="grid">
+
+    <a class="tool-card" href="https://www.rachelslp.org/neural-pathways-app" target="_top" style="--hover-accent:#4d566d">
+      <div class="card-bar" style="background:var(--cividis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🧠</div>
+        <div class="card-label" style="color:var(--cividis-accent)">Education</div>
+        <div class="card-title">Brain Pathways</div>
+        <div class="card-desc">Interactive brain diagram showing overlapping neural networks of reading, learning, and trauma response.</div>
+        <span class="card-tag" style="background:rgba(77,86,109,0.1);color:var(--cividis-accent)">🔬 Neuroscience</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/activity-adapter" target="_top" style="--hover-accent:#4d566d">
+      <div class="card-bar" style="background:var(--cividis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🌱</div>
+        <div class="card-label" style="color:var(--cividis-accent)">Trauma-Informed</div>
+        <div class="card-title">Trauma-Informed Activity Planner</div>
+        <div class="card-desc">Adapt classroom and therapy activities through a trauma-informed lens using SAMHSA principles and DIR/Floortime.</div>
+        <span class="card-tag" style="background:rgba(77,86,109,0.1);color:var(--cividis-accent)">🛡️ SAMHSA</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/trauma-eco-explorer" target="_top" style="--hover-accent:#4d566d">
+      <div class="card-bar" style="background:var(--cividis)"></div>
+      <div class="card-body">
+        <div class="card-icon">🌍</div>
+        <div class="card-label" style="color:var(--cividis-accent)">Systems Mapping</div>
+        <div class="card-title">Ecological Systems & Trauma Explorer</div>
+        <div class="card-desc">Map trauma across Bronfenbrenner's ecological systems and identify effects on learning and development.</div>
+        <span class="card-tag" style="background:rgba(77,86,109,0.1);color:var(--cividis-accent)">🗺️ Ecological</span>
+      </div>
+    </a>
+
+    <a class="tool-card" href="https://www.rachelslp.org/rrcguide" target="_top" style="--hover-accent:#4d566d">
+      <div class="card-bar" style="background:var(--cividis)"></div>
+      <div class="card-body">
+        <div class="card-icon">📘</div>
+        <div class="card-label" style="color:var(--cividis-accent)">Reference</div>
+        <div class="card-title">Reading Research Guide</div>
+        <div class="card-desc">Curated guide to reading research, resources, and evidence-based practices for clinicians and educators.</div>
+        <span class="card-tag" style="background:rgba(77,86,109,0.1);color:var(--cividis-accent)">📚 Reference</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  <strong>RTN | Speech, Language & Literacy</strong><br>
+  Rachel Terra Norton, MS, CCC-SLP &middot; <a href="https://www.rachelslp.org" target="_top">rachelslp.org</a><br>
+  <span class="footer-note">All tools are free, open-source, and run entirely in your browser. No data is collected or transmitted.<br>Palettes: Viridis, Spectral, Plasma, Cividis — R diverging (colorblind-friendly)</span>
+</div>
+
+</body>
+</html>
