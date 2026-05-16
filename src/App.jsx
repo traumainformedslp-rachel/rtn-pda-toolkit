@@ -74,6 +74,7 @@ const SESSIONS = [
         desc: "Place a 1–5 energy scale visible (not pointed at the student). You share yours first. Wait. No demand to respond.",
         prompt: "What did the student's energy seem like today? Did they share voluntarily?",
         swaps: [{ old: "How are you feeling?", new: "I noticed the hallway was really loud today." }, { old: "Are you ready?", new: "I'm thinking we could start with something I found..." }],
+        useEnergyMeter: true,
         selectOptions: { label: "Student engagement level", options: ["Shared voluntarily", "Observed but didn't share", "Avoided/resistant", "Matched my energy check-in"] }
       },
       { name: "Two Experts Protocol", time: "10 min", type: "core",
@@ -419,6 +420,55 @@ function SelectPills({ label, options, value, onChange, t, color }) {
   );
 }
 
+const ENERGY_ZONES = [
+  { level: 1, label: "Sleepy / Still", seenAs: "sluggish", feelsLike: "energy is drained", fits: "beginning or end of day, hungry, sick", color: "#4575b4" },
+  { level: 2, label: "Settled / Calm", seenAs: "relaxed", feelsLike: "slow, steady, pulsing energy", fits: "reading, listening to music", color: "#abd9e9" },
+  { level: 3, label: "Focused / Purposeful", seenAs: "activity oriented and engaged", feelsLike: "directed flow of energy", fits: "hobby or preferred activity, class", color: "#7cca7c" },
+  { level: 4, label: "Amped Up / Fidgety", seenAs: "hyper", feelsLike: "expanding energy", fits: "PE class, celebration", color: "#fdae61" },
+  { level: 5, label: "Maxed Out / Frenzied", seenAs: "not available for learning", feelsLike: "bursting energy or shut down", fits: "upsetting event, recess", color: "#d73027" },
+];
+
+function EnergyMeter({ value, onChange, t, who = "student" }) {
+  const selected = ENERGY_ZONES.find(z => z.level === value);
+  return (
+    <div style={{ marginBottom: 16 }}>
+      <MonoLabel t={t}>My Energy — {who}</MonoLabel>
+      <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: `1px solid ${t.border}` }}>
+        {ENERGY_ZONES.map((z) => {
+          const sel = value === z.level;
+          const textColor = sel ? (z.level >= 4 ? "#1a1a2a" : "#fff") : t.textDim;
+          return (
+            <button key={z.level} onClick={() => onChange(sel ? null : z.level)}
+              style={{
+                flex: 1, padding: "10px 4px 8px", border: "none", cursor: "pointer",
+                background: sel ? z.color : "transparent",
+                display: "flex", flexDirection: "column", alignItems: "center", gap: 3,
+                transition: "all 0.15s",
+                borderRight: z.level < 5 ? `1px solid ${t.border}` : "none",
+              }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: textColor, fontFamily: "'DM Sans', system-ui, sans-serif" }}>{z.level}</span>
+              <span style={{ fontSize: 8, fontWeight: 600, color: sel ? textColor : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", textTransform: "uppercase", letterSpacing: 0.2, lineHeight: 1.2, textAlign: "center" }}>{z.label}</span>
+            </button>
+          );
+        })}
+      </div>
+      {selected && (
+        <div style={{ marginTop: 8, padding: "10px 12px", background: `${selected.color}12`, borderLeft: `3px solid ${selected.color}`, borderRadius: "0 8px 8px 0", fontSize: 12, fontFamily: "'DM Sans', system-ui, sans-serif", lineHeight: 1.6 }}>
+          <div style={{ fontWeight: 700, color: selected.color, marginBottom: 2 }}>{selected.label}</div>
+          <div style={{ color: t.textSub }}>Often seen as: <em>{selected.seenAs}</em></div>
+          <div style={{ color: t.textSub }}>Often feels like: <em>{selected.feelsLike}</em></div>
+          <div style={{ color: t.textMuted, fontSize: 11 }}>Where it fits: <em>{selected.fits}</em></div>
+        </div>
+      )}
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: t.textDim, fontFamily: "'DM Sans', system-ui, sans-serif", letterSpacing: 0.3, textTransform: "uppercase", marginTop: 4 }}>
+        <span>Low energy</span>
+        <span>Regulated</span>
+        <span>High energy</span>
+      </div>
+    </div>
+  );
+}
+
 function SwapBox({ swaps, t, color }) {
   return (
     <div style={{ marginTop: 10, padding: 12, background: t.inputBg, borderLeft: `3px solid ${color}`, borderRadius: 8 }}>
@@ -684,16 +734,16 @@ export default function App() {
         <ThemeToggle dark={dark} toggle={() => setDark((d) => !d)} t={t} />
       </div>
 
-      {/* Action bar */}
+      {/* Toolbar */}
       <div className="no-print" style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
-        <button onClick={handlePrint} style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: t.accent, color: "#fff", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
-          Print / Save PDF
+        <button onClick={handlePrint} style={{ padding: "8px 16px", borderRadius: 10, border: `1px solid ${t.border}`, background: t.card, color: t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 13, fontWeight: 500, cursor: "pointer" }}>
+          Print This Tab
         </button>
-        <button onClick={handleExport} style={{ padding: "8px 16px", borderRadius: 6, border: `1.5px solid ${t.border}`, background: "transparent", color: t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>
+        <button onClick={handleExport} style={{ padding: "8px 16px", borderRadius: 10, border: `1px solid ${t.border}`, background: t.card, color: t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 13, fontWeight: 500, cursor: "pointer" }}>
           Export JSON
         </button>
         <div style={{ flex: 1 }} />
-        <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5 }}>{totalResponses} response{totalResponses === 1 ? "" : "s"} captured</span>
+        <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 12, color: t.textDim, fontWeight: 500 }}>{totalResponses} response{totalResponses === 1 ? "" : "s"} captured</span>
       </div>
 
       {/* Tabs */}
@@ -903,6 +953,15 @@ export default function App() {
                   <p style={{ margin: "0 0 16px", fontSize: 14, color: t.textSub, lineHeight: 1.7 }}>{act.desc}</p>
 
                   {act.swaps && <SwapBox swaps={act.swaps} t={t} color={session.color} />}
+
+                  {act.useEnergyMeter && (
+                    <div style={{ marginTop: 16 }}>
+                      <EnergyMeter who="clinician" value={responses[`${actKey(session.id, activeActivityIdx)}-energy-clinician`] || null}
+                        onChange={(v) => setResponses((p) => ({ ...p, [`${actKey(session.id, activeActivityIdx)}-energy-clinician`]: v }))} t={t} />
+                      <EnergyMeter who="student" value={responses[`${actKey(session.id, activeActivityIdx)}-energy-student`] || null}
+                        onChange={(v) => setResponses((p) => ({ ...p, [`${actKey(session.id, activeActivityIdx)}-energy-student`]: v }))} t={t} />
+                    </div>
+                  )}
 
                   {act.selectOptions && (
                     <div style={{ marginTop: 16 }}>
